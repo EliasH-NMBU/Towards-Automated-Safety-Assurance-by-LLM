@@ -5,12 +5,19 @@ import nuXmvHandler
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
 NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_rover
 
-#VARIABLETABLE = csvHandler.get_master_variable_table_info() # Adjust path as needed
-#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv") # Adjust path as needed
 
-VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info() # Adjust path as needed
-CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv") # Adjust path as needed
+### Load CSV data and variable table
+#VARIABLETABLE = csvHandler.get_master_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+
+#VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv")
+
+VARIABLETABLE = csvHandler.get_rover_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
+###
 
 
 client = OpenAI()
@@ -45,7 +52,7 @@ def askgpt_generate_LTL_batch(nl_descriptions):
     response = client.chat.completions.create(
         model=MODEL,
         messages=messages,
-        max_completion_tokens=3000,
+        max_completion_tokens=9000,
         temperature=TEMPERATURE # maybe change later
     )
 
@@ -94,7 +101,7 @@ if __name__ == "__main__":
             if reference and reference.strip():
 
                 # Run semantic equivalence check
-                result2 = nuXmvHandler.check_equivalence_master(generated, reference)
+                result2 = EQUIVALENCE_HANDLER(generated, reference) # Adjust function as needed
            
                 # Increment true count
                 if result2 is True:
