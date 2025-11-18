@@ -2,24 +2,73 @@ import subprocess
 import tempfile
 import os
 
+import re
+
+
+def normalize(f: str) -> str:
+    # Basic logical normalization
+    f = (f.replace("∧", "&")
+          .replace("∨", "|")
+          .replace("¬", "!")
+          .replace("→", "->")
+          .replace("≥", ">=")
+          .replace("≤", "<=")
+          .replace("≠", "!=")
+          )
+
+    # --- Prevent operator replacements from hitting variable names ---
+    f = re.sub(r"\bY\s*\(", "X(", f)    # Y φ -> X φ
+    f = re.sub(r"\bZ\s*\(", "X(", f)    # Z φ -> X φ
+    f = re.sub(r"\bO\s*\[", "F[", f)    # O[a,b] -> F[a,b]
+    f = re.sub(r"\bO\s*\(", "F(", f)    # O(φ) -> F(φ)
+    f = re.sub(r"\bS\s*\(", "U(", f)    # S -> U
+    f = re.sub(r"\bT\s*\(", "U(", f)    # T -> U
+    f = re.sub(r"\bhistorically\b", "G", f)
+
+    # --- Sanitize numeric constants and dangerous arithmetic ---
+    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)  # strip decimals
+
+    return f
+
+
+def responseHandler(model, f1, f2):
+
+    with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w", encoding="utf-8") as tmp:
+        tmp.write(model)
+        tmp_path = tmp.name
+
+    try:
+        result = subprocess.run(
+            ["nuxmv.exe", tmp_path],
+            capture_output=True,
+            text=True,
+            timeout=30
+        )
+
+    finally:
+        os.remove(tmp_path)
+
+    output = result.stdout
+    error_output = result.stderr
+
+    if "is true" in output:
+        return True
+    elif "is false" in output:
+        return False
+    else:
+        print("⚠️ Unexpected NuXMV output format")
+        print("---- STDOUT ----")
+        print(f1, "\n",f2)
+        print("---- STDERR ----")
+        print(error_output)
+        print("----------------")
+        return False
+
 
 def check_equivalence_master(formula1, formula2):
     
-    
-    def normalize(f):
-        return (f.replace("∧", "&")
-                .replace("∨", "|")
-                .replace("¬", "!")
-                .replace("→", "->")
-                .replace("≥", ">=")
-                .replace("≤", "<=")
-                .replace("=", "=")
-                .replace("≠", "!=")
-                )
-
     f1 = normalize(formula1)
     f2 = normalize(formula2)
-
 
     model = f"""
     MODULE main
@@ -36,51 +85,13 @@ def check_equivalence_master(formula1, formula2):
 
     LTLSPEC ({f1}) <-> ({f2})
     """
-
-    with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w", encoding="utf-8") as tmp:
-        tmp.write(model)
-        tmp_path = tmp.name
-
-    try:
-        result = subprocess.run(
-            ["nuxmv.exe", tmp_path],
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
-
-        output = result.stdout
-        #re.search(r"is\s+(true|false)", result_text, re.I)
-
-        if "is true" in output:
-            return True
-        elif "is false" in output:
-            return False
-        else:
-            print("⚠️ Unexpected NuXMV output format")
-            return False
-        
-    finally:
-        os.remove(tmp_path)
+    return responseHandler(model, f1, f2)
 
 
 def check_equivalence_rover(formula1, formula2):
-    
-    
-    def normalize(f):
-        return (f.replace("∧", "&")
-                .replace("∨", "|")
-                .replace("¬", "!")
-                .replace("→", "->")
-                .replace("≥", ">=")
-                .replace("≤", "<=")
-                .replace("=", "=")
-                .replace("≠", "!=")
-                )
 
     f1 = normalize(formula1)
     f2 = normalize(formula2)
-
 
     model = f"""
     MODULE main
@@ -90,7 +101,7 @@ def check_equivalence_rover(formula1, formula2):
     recharge : boolean;
     goal : 0..100;
     pre_battery : 0..100;
-    n : 0..100;
+    n : 1..100;
     plan : 0..100;
     chargeNeeded_var : 0..100;
     length_plan : 0..100;
@@ -102,59 +113,19 @@ def check_equivalence_rover(formula1, formula2):
     currentPhysicalPosition : 0..100;
     start : 0..100;
     s0 : 0..100;
+    x : 0..100;
+    y : 0..100;
     obstacle : 0..100;
+    Obstacle(currentPosition) : boolean;
     speed : 0..100;
     removeGoalFromSet : boolean;
 
     LTLSPEC ({f1}) <-> ({f2})
     """
-
-    with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w", encoding="utf-8") as tmp:
-        tmp.write(model)
-        tmp_path = tmp.name
-
-    try:
-        result = subprocess.run(
-            ["nuxmv.exe", tmp_path],
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
-
-        output = result.stdout
-        error_output = result.stderr
-
-        if "is true" in output:
-            return True
-        elif "is false" in output:
-            return False
-        else:
-            print("⚠️ Unexpected NuXMV output format")
-            print("---- STDOUT ----")
-            print(output)
-            print("---- STDERR ----")
-            print(error_output)
-            print("----------------")
-            return False
-
-        
-    finally:
-        os.remove(tmp_path)
+    return responseHandler(model, f1, f2)      
 
 
 def check_equivalence_lungV(formula1, formula2):
-    
-    
-    def normalize(f):
-        return (f.replace("∧", "&")
-                .replace("∨", "|")
-                .replace("¬", "!")
-                .replace("→", "->")
-                .replace("≥", ">=")
-                .replace("≤", "<=")
-                .replace("=", "=")
-                .replace("≠", "!=")
-                )
 
     f1 = normalize(formula1)
     f2 = normalize(formula2)
@@ -348,32 +319,7 @@ def check_equivalence_lungV(formula1, formula2):
     LTLSPEC ({f1}) <-> ({f2})
     """
 
-
-    with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w", encoding="utf-8") as tmp:
-        tmp.write(model)
-        tmp_path = tmp.name
-
-    try:
-        result = subprocess.run(
-            ["nuxmv.exe", tmp_path],
-            capture_output=True,
-            text=True,
-            timeout=30
-        )
-
-        output = result.stdout
-        #re.search(r"is\s+(true|false)", result_text, re.I)
-
-        if "is true" in output:
-            return True
-        elif "is false" in output:
-            return False
-        else:
-            print("⚠️ Unexpected NuXMV output format")
-            return False
-        
-    finally:
-        os.remove(tmp_path)
+    return responseHandler(model, f1, f2)
 
 
 if __name__ == "__main__":
