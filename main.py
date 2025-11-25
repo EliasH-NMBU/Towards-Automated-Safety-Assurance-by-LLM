@@ -30,6 +30,7 @@ def askgpt_generate_LTL_batch(nl_descriptions):
         "into its corresponding past-time LTL (ptLTL) formula.\n\n"
         "Return only the formulas, one per line, in the same order.\n"
         "Do not include any numbering, explanations, or LaTeX syntax.\n\n"
+        "Strictly use variables from the following variable mapping:\n"
         f"Variable mapping:\n{VARIABLETABLE}\n\n"
     )
 
