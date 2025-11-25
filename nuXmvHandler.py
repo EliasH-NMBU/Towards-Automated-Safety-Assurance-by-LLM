@@ -64,7 +64,7 @@ def responseHandler(model, f1, f2):
             ["nuxmv.exe", tmp_path],
             capture_output=True,
             text=True,
-            timeout=600
+            timeout=60000
         )
 
     finally:
@@ -130,14 +130,14 @@ def check_equivalence_rover(formula1, formula2):
     batteryFull : boolean;
     atGoal : boolean;
     Obstacle : boolean;
-    currentPosition : 0..100;
+    currentPosition : 0..10;
     initialPosition : 0..100;
     currentPhysicalPosition : 0..100;
     start : 0..100;
     s0 : 0..100;
     x : 0..100;
     y : 0..100;
-    obstacle : 0..100;
+    obstacle : 0..10;
     Obstacle_currentPosition : boolean;
     speed : 0..100;
     removeGoalFromSet : boolean;
