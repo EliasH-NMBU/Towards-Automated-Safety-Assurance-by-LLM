@@ -101,7 +101,7 @@ if __name__ == "__main__":
             if reference and reference.strip():
 
                 # Run semantic equivalence check
-                result2 = EQUIVALENCE_HANDLER(generated, reference) # Adjust function as needed
+                result2 = EQUIVALENCE_HANDLER(reference, generated) # Adjust function as needed
            
                 # Increment true count
                 if result2 is True:

@@ -58,7 +58,7 @@ def responseHandler(model, f1, f2):
     else:
         print("⚠️ Unexpected NuXMV output format")
         print("---- STDOUT ----")
-        print(f1, "\n",f2)
+        print("Reference: ", f1, "\n","Generated: ", f2)
         print("---- STDERR ----")
         print(error_output)
         print("----------------")
