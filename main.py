@@ -3,8 +3,8 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
-TEMPERATURE = 0  # Adjust temperature for variability in responses
+NUM_ITERATIONS = 100 # Number of iterations for the entire batch process
+TEMPERATURE = 1  # Adjust temperature for variability in responses
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_rover
 
 
