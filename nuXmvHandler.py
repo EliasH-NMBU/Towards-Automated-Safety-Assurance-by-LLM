@@ -1,32 +1,54 @@
 import subprocess
 import tempfile
 import os
-
 import re
+import unicodedata
 
 
 def normalize(f: str) -> str:
-    # Basic logical normalization
-    f = (f.replace("∧", "&")
-          .replace("∨", "|")
-          .replace("¬", "!")
-          .replace("→", "->")
-          .replace("≥", ">=")
-          .replace("≤", "<=")
-          .replace("≠", "!=")
-          )
+    # --- 1. Normalize Unicode form ---
+    f = unicodedata.normalize("NFKD", f)
 
-    # --- Prevent operator replacements from hitting variable names ---
-    f = re.sub(r"\bY\s*\(", "X(", f)    # Y φ -> X φ
-    f = re.sub(r"\bZ\s*\(", "X(", f)    # Z φ -> X φ
-    f = re.sub(r"\bO\s*\[", "F[", f)    # O[a,b] -> F[a,b]
-    f = re.sub(r"\bO\s*\(", "F(", f)    # O(φ) -> F(φ)
-    f = re.sub(r"\bS\s*\(", "U(", f)    # S -> U
-    f = re.sub(r"\bT\s*\(", "U(", f)    # T -> U
+    # --- 2. Replace known math/logical Unicode operators ---
+    replacements = {
+        "−": "-",   # minus
+        "–": "-",   # en-dash
+        "—": "-",   # em-dash
+        "“": '"', "”": '"',
+        "‘": "'", "’": "'",
+        "×": "*",
+        "·": "*",
+        "…": "...",
+        "→": "->",
+        "⇒": "->",
+        "↔": "<->",
+        "≤": "<=",
+        "≥": ">=",
+        "≠": "!=",
+        "¬": "!",
+        "∧": "&",
+        "∨": "|",
+    }
+    for k, v in replacements.items():
+        f = f.replace(k, v)
+
+    # --- 3. Convert ptLTL past operators ---
+    f = re.sub(r"\bY\s*\(", "X(", f)
+    f = re.sub(r"\bZ\s*\(", "X(", f)
+    f = re.sub(r"\bO\s*\[", "F[", f)
+    f = re.sub(r"\bO\s*\(", "F(", f)
+    f = re.sub(r"\bS\s*\(", "U(", f)
+    f = re.sub(r"\bT\s*\(", "U(", f)
     f = re.sub(r"\bhistorically\b", "G", f)
 
-    # --- Sanitize numeric constants and dangerous arithmetic ---
-    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)  # strip decimals
+    # --- 4. Strip decimals (NuXMV cannot multiply floats) ---
+    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
+
+    # --- 5. REMOVE ALL NON-ASCII CHARACTERS ---
+    f = f.encode("ascii", "ignore").decode()
+
+    # --- 6. Collapse repeated whitespace ---
+    f = re.sub(r"\s+", " ", f).strip()
 
     return f
 
@@ -42,7 +64,7 @@ def responseHandler(model, f1, f2):
             ["nuxmv.exe", tmp_path],
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=600
         )
 
     finally:
