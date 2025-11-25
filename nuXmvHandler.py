@@ -116,7 +116,7 @@ def check_equivalence_rover(formula1, formula2):
     x : 0..100;
     y : 0..100;
     obstacle : 0..100;
-    Obstacle(currentPosition) : boolean;
+    Obstacle_currentPosition : boolean;
     speed : 0..100;
     removeGoalFromSet : boolean;
 
@@ -336,3 +336,9 @@ if __name__ == "__main__":
 
     equiv = check_equivalence_master(h1, h2)
     print("\nEquivalent:", equiv)
+
+    equiv_rover = check_equivalence_rover(
+        "H (atGoal -> (currentPosition = goal))", 
+        "(H (atGoal -> (currentPosition = goal)))"
+    )
+    print("Rover Equivalent:", equiv_rover)
