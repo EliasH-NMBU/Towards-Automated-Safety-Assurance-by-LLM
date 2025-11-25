@@ -6,7 +6,7 @@ R1.3;Battery monitor shall show battery charge 5% lower than currently estimated
 R1.4;The interface recharge output shall be set to true when the current battery charge is lower than battery needed to reach the charging station from the current position plus 5% battery charge.;Interface shall always satisfy ((0.95*battery) <= chargeNeeded_var) => recharge;(H (((0.95 * battery) <= chargeNeeded_var) -> recharge))
 R1.5;Once at charging station, rover shall remain there until battery reaches full charge.;Interface shall always satisfy (goal = chargePosition & atGoal) => batteryFull;(H (((goal = chargePosition) & atGoal) -> batteryFull))
 R1.6;Each step in the plan shall not use more than 1/n amount of battery;Interface shall always satisfy (battery = pre_battery - 1/n * length_plan);(H (battery = (pre_battery - ((1 / n) * length_plan))))
-R2;The rover shall not collide with an obstacle;Navigation shall always satisfy ! Obstacle(currentPosition);(H (! Obstacle(currentPosition)))
+R2;The rover shall not collide with an obstacle;Navigation shall always satisfy ! Obstacle(currentPosition);(H (! Obstacle_currentPosition))
 R2.1;Initial rover position shall be static;Navigation shall always satisfy initialPosition = y;(H (initialPosition = y))
 R2.2;Current rover position shall be accurate;Navigation shall always satisfy currentPosition = currentPhysicalPosition;(H (currentPosition = currentPhysicalPosition))
 R2.2.1;The vision subsystem shall ensure that the initial current rover position as recognised by the Vision is equal to the static initial position;Map_Validator shall immediately satisfy start = s0;(H ((! (Y TRUE)) -> (start = s0)))
