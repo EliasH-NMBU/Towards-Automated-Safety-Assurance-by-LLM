@@ -73,7 +73,7 @@ def get_rover_variable_table_info():
         "x (Internal, integer): Static Charging station location\n"
         "y (Internal, integer): Static Initial rover position\n"
         "obstacle (Input, integer): Position identifier of an obstacle detected by the vision subsystem.\n"
-        "Obstacle(currentPosition) (Internal, boolean): True if there is an obstacle at the rover's current position.\n"
+        "Obstacle_currentPosition (Internal, boolean): True if there is an obstacle at the rover's current position.\n"
         "speed (Input, integer): The rovers velocity, typically in km/h.\n"
         "removeGoalFromSet (Output, boolean): Command to remove a completed goal from the navigation goal list.\n"
         "atGoal (Input, boolean): Status flag that becomes true when the rover reaches its goal position.\n"
