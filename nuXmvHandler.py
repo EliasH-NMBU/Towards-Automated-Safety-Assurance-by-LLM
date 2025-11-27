@@ -147,6 +147,58 @@ def check_equivalence_rover(formula1, formula2):
     return responseHandler(model, f1, f2)      
 
 
+def check_equivalence_abzrover_extended(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    model = f"""
+    MODULE main
+    VAR
+        currentPosition : 0..1000;
+        obstacles : array 0..50 of boolean; -- presence map
+        GSObstacles : array 0..50 of boolean;
+        obstacleAccuracy : 0..100; -- percentage
+        perturbationInput : 0..1000;
+        prioritisedGoals : array 0..20 of 0..1000;
+        chargers : array 0..10 of 0..1000;
+        invalidMap : boolean;
+        goal : 0..1000;
+        safeLocation : 0..1000;
+        recharge : boolean;
+        atGoal : boolean;
+        noplan : boolean;
+        systemState : 0..10; -- encoded system-state finite set
+        plan2C : array 0..100 of 0..1000;
+        plan2D : array 0..100 of 0..1000;
+        plans : array 0..20 of 0..1000;
+        planTimeout : boolean;
+        batteryLevel : 0..100;
+        measuredBattery : 0..100;
+        movementCommands : 0..20;
+        velocityCommands : 0..20;
+        solarPanelsOpen : boolean;
+        batteryNeededToGoal : 0..100;
+        batteryNeededToCharger : 0..100;
+        communicationData : 0..20; -- encoded enum
+        completed : boolean;
+        noMoreViablePlans : boolean;
+        failed2Reconnect : boolean;
+        connectionStatus : 0..3; -- 0=ok 1=failed 2=reconnecting 3=timeout
+        responseData : 0..1000;
+        helperId : 0..50;
+        location : 0..1000;
+        failure : boolean;
+        failureCause : 0..10; -- symbolic failure classification
+        reboot : boolean;
+        requestHelp : boolean;
+        waitForHelpTimer : 0..1000;
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
+
+
 def check_equivalence_lungV(formula1, formula2):
 
     f1 = normalize(formula1)
