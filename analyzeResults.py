@@ -6,10 +6,13 @@ import os
 
 USECASE = "UV Robot Use Case"
 TEMP = "1"
+csv_file = "results/100+IterationResults/20251128171843_ptLTL_results_temp1.csv"
+
 
 # ----------------------------
 # Wilson Score Confidence Interval
 # ----------------------------
+
 def wilson_ci(successes, n, confidence=0.95):
     if n == 0:
         return (0, 0)
@@ -20,10 +23,10 @@ def wilson_ci(successes, n, confidence=0.95):
     margin = z*np.sqrt((phat*(1-phat) + z*z/(4*n)) / n) / denominator
     return center - margin, center + margin
 
+
 # ----------------------------
 # Load CSV
 # ----------------------------
-csv_file = "results/100+IterationResults/20251128171843_ptLTL_results_temp1.csv"
 
 df = pd.read_csv(csv_file)
 df['Equivalence Check'] = df['Equivalence Check'].astype(bool)
@@ -41,9 +44,11 @@ print(f"Incorrect (False): {false_count}")
 print(f"Accuracy: {accuracy:.3f}")
 print(f"95% CI: [{ci_low:.3f}, {ci_high:.3f}]\n")
 
+
 # ----------------------------
 # NMBU Color Palette
 # ----------------------------
+
 NMBU_GREEN = "#07CA86"       # Primary green
 NMBU_DARK_GREEN = "#087D54"  # For accuracy bar
 NMBU_LIGHT_GREEN = "#8BC7B8"
@@ -51,9 +56,11 @@ NMBU_GREY_MED = "#FCBA06"     # False
 NMBU_GREY_LIGHT = "#E6E6E6"
 NMBU_GREY_DARK = "#4D4D4D"
 
+
 # ----------------------------
 # Publication Style
 # ----------------------------
+
 plt.rcParams.update({
     "font.size": 13,
     "font.family": "serif",
@@ -69,9 +76,11 @@ plt.rcParams.update({
 out_dir = "analysis_plots"
 os.makedirs(out_dir, exist_ok=True)
 
+
 # ----------------------------
 # Pie Chart (NMBU Colors)
 # ----------------------------
+
 fig, ax = plt.subplots(figsize=(6, 6))
 
 labels = ['True', 'False']
@@ -99,9 +108,11 @@ plt.savefig(f"{out_dir}/equivalence_pie_chart.png", dpi=300)
 plt.savefig(f"{out_dir}/equivalence_pie_chart.pdf", dpi=300)
 plt.close()
 
+
 # ----------------------------
 # Bar Chart with Confidence Interval (NMBU Style)
 # ----------------------------
+
 fig, ax = plt.subplots(figsize=(6, 6))
 
 ax.bar(['Accuracy'], [accuracy], color=NMBU_DARK_GREEN, edgecolor="black")
@@ -123,9 +134,11 @@ plt.savefig(f"{out_dir}/accuracy_ci.png", dpi=300)
 plt.savefig(f"{out_dir}/accuracy_ci.pdf", dpi=300)
 plt.close()
 
+
 # ----------------------------
 # Summary Table
 # ----------------------------
+
 fig, ax = plt.subplots(figsize=(7, 1.8))
 ax.axis('off')
 
