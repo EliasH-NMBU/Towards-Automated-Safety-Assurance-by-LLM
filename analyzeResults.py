@@ -4,6 +4,9 @@ import numpy as np
 from scipy.stats import norm
 import os
 
+USECASE = "UV Robot Use Case"
+TEMP = "1"
+
 # ----------------------------
 # Wilson Score Confidence Interval
 # ----------------------------
@@ -20,7 +23,7 @@ def wilson_ci(successes, n, confidence=0.95):
 # ----------------------------
 # Load CSV
 # ----------------------------
-csv_file = "results/100+IterationResults/20251125163934_ptLTL_results_temp1.csv"
+csv_file = "results/100+IterationResults/20251128171843_ptLTL_results_temp1.csv"
 
 df = pd.read_csv(csv_file)
 df['Equivalence Check'] = df['Equivalence Check'].astype(bool)
@@ -41,10 +44,10 @@ print(f"95% CI: [{ci_low:.3f}, {ci_high:.3f}]\n")
 # ----------------------------
 # NMBU Color Palette
 # ----------------------------
-NMBU_GREEN = "#14A170"       # Primary green
+NMBU_GREEN = "#07CA86"       # Primary green
 NMBU_DARK_GREEN = "#087D54"  # For accuracy bar
 NMBU_LIGHT_GREEN = "#8BC7B8"
-NMBU_GREY_MED = "#DDA41F"     # False
+NMBU_GREY_MED = "#FCBA06"     # False
 NMBU_GREY_LIGHT = "#E6E6E6"
 NMBU_GREY_DARK = "#4D4D4D"
 
@@ -71,7 +74,7 @@ os.makedirs(out_dir, exist_ok=True)
 # ----------------------------
 fig, ax = plt.subplots(figsize=(6, 6))
 
-labels = ['Equivalent', 'Not Equivalent']
+labels = ['True', 'False']
 myexplode = [0, 0.1]
 sizes = [true_count, false_count]
 colors = [NMBU_GREEN, NMBU_GREY_MED]
@@ -89,7 +92,7 @@ wedges, texts, autotexts = ax.pie(
 for text in texts + autotexts:
     text.set_fontsize(12)
 
-ax.set_title("Equivalence Results, 100 iterations,\n rover use case, temperature = 1", pad=18)
+ax.set_title(f"Equivalence Results\n {USECASE}, temperature = {TEMP}", pad=18)
 
 plt.tight_layout()
 plt.savefig(f"{out_dir}/equivalence_pie_chart.png", dpi=300)
@@ -150,3 +153,80 @@ plt.savefig(f"{out_dir}/summary_table.pdf", dpi=300, bbox_inches='tight')
 plt.close()
 
 print(f"📊 All NMBU-color scientific plots saved in: {out_dir}")
+
+
+# ----------------------------
+# Horizontal Bar Plot per Requirement (Counts, not proportions)
+# ----------------------------
+
+if "ID" not in df.columns:
+    print("⚠️ No 'ID' column found in CSV. Skipping per-requirement bar plot.")
+else:
+    # Count True/False per requirement
+    grouped = df.groupby("ID")["Equivalence Check"].agg(
+        true_count=lambda x: x.sum(),
+        false_count=lambda x: (~x).sum(),
+        total=lambda x: len(x)
+    ).reset_index()
+
+    # Total number of iterations per requirement (assumed same for all)
+    iterations = int(grouped["total"].iloc[0])
+
+    # Reverse order for better visualization
+    grouped = grouped.iloc[::-1]
+
+    fig, ax = plt.subplots(figsize=(9, max(4, len(grouped) * 0.35)))
+
+    y_positions = np.arange(len(grouped))
+
+    # True counts
+    ax.barh(
+        y_positions,
+        grouped["true_count"],
+        color=NMBU_GREEN,
+        edgecolor="black",
+        label="True"
+    )
+
+    """"
+    # False counts stacked to the right of True counts
+    ax.barh(
+        y_positions,
+        grouped["false_count"],
+        left=grouped["true_count"],
+        color=NMBU_GREY_MED,
+        edgecolor="black",
+        label="False"
+    )
+    """
+
+    # Requirement ID on Y-axis
+    ax.set_yticks(y_positions)
+    ax.set_yticklabels(grouped["ID"], fontsize=11)
+    ax.set_ylabel("ID", fontsize=13, rotation=0)
+
+    ax.set_xlabel("Iterations", fontsize=13)
+    ax.set_title(f"Equivalence Results \n {USECASE}, temperature = {TEMP}", fontsize=15, pad=30)
+
+    # X-axis shows total iterations
+    ax.set_xlim(0, iterations)
+
+    # Add light grid
+    ax.grid(axis="x", linestyle="--", alpha=0.4)
+
+    # Legend
+    ax.legend(
+    loc="upper center",
+    bbox_to_anchor=(0.5, 1.12),
+    ncol=2,
+    frameon=False
+    )
+
+
+    # Leave 8% of the figure height free at the top for the legend
+    plt.tight_layout(rect=[0, 0, 1, 1])
+    plt.savefig(f"{out_dir}/per_requirement_horizontal_bars_counts.png", dpi=300)
+    plt.savefig(f"{out_dir}/per_requirement_horizontal_bars_counts.pdf", dpi=300)
+    plt.close()
+
+    print(f"📘 Per-requirement horizontal count bar chart generated. (Iterations = {iterations})")
