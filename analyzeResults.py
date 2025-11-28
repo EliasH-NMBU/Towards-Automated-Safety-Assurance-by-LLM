@@ -5,9 +5,9 @@ from scipy.stats import norm
 import os
 
 USECASE = "UV Robot Use Case"
-TEMP = "1"
-csv_file = "results/100+IterationResults/20251128171843_ptLTL_results_temp1.csv"
-
+TEMP = "0"
+csv_file = "results/100+IterationResults/20251128192047_ptLTL_results.csv"
+ITERAITIONS = "1000"
 
 # ----------------------------
 # Wilson Score Confidence Interval

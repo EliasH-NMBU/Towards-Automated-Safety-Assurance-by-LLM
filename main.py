@@ -3,14 +3,14 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 1000 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_abzrover_extended
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
 
 
 ### Load CSV data and variable table
-#VARIABLETABLE = csvHandler.get_master_variable_table_info()
-#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+VARIABLETABLE = csvHandler.get_master_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
 
 #VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv")
@@ -18,8 +18,8 @@ EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_abzrover_extended
 #VARIABLETABLE = csvHandler.get_rover_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
 
-VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
+#VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
 ###
 
 
