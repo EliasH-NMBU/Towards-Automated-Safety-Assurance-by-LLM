@@ -1,32 +1,54 @@
 import subprocess
 import tempfile
 import os
-
 import re
+import unicodedata
 
 
 def normalize(f: str) -> str:
-    # Basic logical normalization
-    f = (f.replace("∧", "&")
-          .replace("∨", "|")
-          .replace("¬", "!")
-          .replace("→", "->")
-          .replace("≥", ">=")
-          .replace("≤", "<=")
-          .replace("≠", "!=")
-          )
+    # --- 1. Normalize Unicode form ---
+    f = unicodedata.normalize("NFKD", f)
 
-    # --- Prevent operator replacements from hitting variable names ---
-    f = re.sub(r"\bY\s*\(", "X(", f)    # Y φ -> X φ
-    f = re.sub(r"\bZ\s*\(", "X(", f)    # Z φ -> X φ
-    f = re.sub(r"\bO\s*\[", "F[", f)    # O[a,b] -> F[a,b]
-    f = re.sub(r"\bO\s*\(", "F(", f)    # O(φ) -> F(φ)
-    f = re.sub(r"\bS\s*\(", "U(", f)    # S -> U
-    f = re.sub(r"\bT\s*\(", "U(", f)    # T -> U
+    # --- 2. Replace known math/logical Unicode operators ---
+    replacements = {
+        "−": "-",   # minus
+        "–": "-",   # en-dash
+        "—": "-",   # em-dash
+        "“": '"', "”": '"',
+        "‘": "'", "’": "'",
+        "×": "*",
+        "·": "*",
+        "…": "...",
+        "→": "->",
+        "⇒": "->",
+        "↔": "<->",
+        "≤": "<=",
+        "≥": ">=",
+        "≠": "!=",
+        "¬": "!",
+        "∧": "&",
+        "∨": "|",
+    }
+    for k, v in replacements.items():
+        f = f.replace(k, v)
+
+    # --- 3. Convert ptLTL past operators ---
+    f = re.sub(r"\bY\s*\(", "X(", f)
+    f = re.sub(r"\bZ\s*\(", "X(", f)
+    f = re.sub(r"\bO\s*\[", "F[", f)
+    f = re.sub(r"\bO\s*\(", "F(", f)
+    f = re.sub(r"\bS\s*\(", "U(", f)
+    f = re.sub(r"\bT\s*\(", "U(", f)
     f = re.sub(r"\bhistorically\b", "G", f)
 
-    # --- Sanitize numeric constants and dangerous arithmetic ---
-    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)  # strip decimals
+    # --- 4. Strip decimals (NuXMV cannot multiply floats) ---
+    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
+
+    # --- 5. REMOVE ALL NON-ASCII CHARACTERS ---
+    f = f.encode("ascii", "ignore").decode()
+
+    # --- 6. Collapse repeated whitespace ---
+    f = re.sub(r"\s+", " ", f).strip()
 
     return f
 
@@ -42,7 +64,7 @@ def responseHandler(model, f1, f2):
             ["nuxmv.exe", tmp_path],
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=60000
         )
 
     finally:
@@ -108,14 +130,14 @@ def check_equivalence_rover(formula1, formula2):
     batteryFull : boolean;
     atGoal : boolean;
     Obstacle : boolean;
-    currentPosition : 0..100;
+    currentPosition : 0..10;
     initialPosition : 0..100;
     currentPhysicalPosition : 0..100;
     start : 0..100;
     s0 : 0..100;
     x : 0..100;
     y : 0..100;
-    obstacle : 0..100;
+    obstacle : 0..10;
     Obstacle_currentPosition : boolean;
     speed : 0..100;
     removeGoalFromSet : boolean;
@@ -123,6 +145,58 @@ def check_equivalence_rover(formula1, formula2):
     LTLSPEC ({f1}) <-> ({f2})
     """
     return responseHandler(model, f1, f2)      
+
+
+def check_equivalence_abzrover_extended(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    model = f"""
+    MODULE main
+    VAR
+        currentPosition : 0..1000;
+        obstacles : array 0..50 of boolean; -- presence map
+        GSObstacles : array 0..50 of boolean;
+        obstacleAccuracy : 0..100; -- percentage
+        perturbationInput : 0..1000;
+        prioritisedGoals : array 0..20 of 0..1000;
+        chargers : array 0..10 of 0..1000;
+        invalidMap : boolean;
+        goal : 0..1000;
+        safeLocation : 0..1000;
+        recharge : boolean;
+        atGoal : boolean;
+        noplan : boolean;
+        systemState : 0..10; -- encoded system-state finite set
+        plan2C : array 0..100 of 0..1000;
+        plan2D : array 0..100 of 0..1000;
+        plans : array 0..20 of 0..1000;
+        planTimeout : boolean;
+        batteryLevel : 0..100;
+        measuredBattery : 0..100;
+        movementCommands : 0..20;
+        velocityCommands : 0..20;
+        solarPanelsOpen : boolean;
+        batteryNeededToGoal : 0..100;
+        batteryNeededToCharger : 0..100;
+        communicationData : 0..20; -- encoded enum
+        completed : boolean;
+        noMoreViablePlans : boolean;
+        failed2Reconnect : boolean;
+        connectionStatus : 0..3; -- 0=ok 1=failed 2=reconnecting 3=timeout
+        responseData : 0..1000;
+        helperId : 0..50;
+        location : 0..1000;
+        failure : boolean;
+        failureCause : 0..10; -- symbolic failure classification
+        reboot : boolean;
+        requestHelp : boolean;
+        waitForHelpTimer : 0..1000;
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
 
 
 def check_equivalence_lungV(formula1, formula2):

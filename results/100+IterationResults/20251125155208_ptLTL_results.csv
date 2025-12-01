@@ -1,0 +1,1501 @@
+Summary,ID,ptLTL,Generated ptLTL,Equivalence Check
+1/1,R1,(H (battery > 0)),H (battery > 0),True
+1/1,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+1/1,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/1,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/1,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/1,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/1,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+1/1,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+1/1,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+1/1,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+1/1,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/1,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+1/1,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/1,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+1/1,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+2/2,R1,(H (battery > 0)),H (battery > 0),True
+2/2,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+2/2,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/2,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/2,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/2,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/2,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+2/2,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+2/2,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+2/2,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+2/2,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/2,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+2/2,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/2,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+2/2,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+3/3,R1,(H (battery > 0)),H (battery > 0),True
+3/3,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+3/3,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/3,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/3,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/3,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/3,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+3/3,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+3/3,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+3/3,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+3/3,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/3,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+3/3,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/3,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+3/3,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+4/4,R1,(H (battery > 0)),H (battery > 0),True
+4/4,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+4/4,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/4,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/4,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/4,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/4,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+4/4,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+4/4,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+4/4,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+4/4,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/4,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+4/4,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/4,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+4/4,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+5/5,R1,(H (battery > 0)),H (battery > 0),True
+5/5,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+5/5,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/5,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/5,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/5,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/5,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+5/5,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+5/5,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+5/5,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+5/5,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/5,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+5/5,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/5,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+5/5,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+6/6,R1,(H (battery > 0)),H (battery > 0),True
+6/6,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+6/6,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/6,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/6,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/6,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/6,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+6/6,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+6/6,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+6/6,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+6/6,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/6,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+6/6,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/6,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+6/6,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+7/7,R1,(H (battery > 0)),H (battery > 0),True
+7/7,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+7/7,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/7,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/7,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/7,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/7,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+7/7,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+7/7,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+7/7,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+7/7,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/7,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+7/7,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/7,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+7/7,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+8/8,R1,(H (battery > 0)),H (battery > 0),True
+8/8,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+8/8,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/8,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/8,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/8,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/8,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+8/8,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+8/8,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+8/8,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+8/8,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/8,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+8/8,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/8,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet → O atGoal),False
+8/8,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+9/9,R1,(H (battery > 0)),H (battery > 0),True
+9/9,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+9/9,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/9,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/9,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/9,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/9,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+9/9,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+9/9,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+9/9,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+9/9,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/9,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+9/9,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/9,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+9/9,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+10/10,R1,(H (battery > 0)),H (battery > 0),True
+10/10,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+10/10,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/10,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/10,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/10,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/10,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+10/10,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+10/10,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+10/10,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+10/10,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/10,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+10/10,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/10,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+10/10,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+11/11,R1,(H (battery > 0)),H (battery > 0),True
+11/11,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+11/11,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/11,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/11,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/11,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/11,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+11/11,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+11/11,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+11/11,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+11/11,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/11,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+11/11,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/11,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+11/11,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+12/12,R1,(H (battery > 0)),H (battery > 0),True
+12/12,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+12/12,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/12,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/12,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/12,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/12,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+12/12,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+12/12,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+12/12,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+12/12,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/12,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+12/12,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/12,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+12/12,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+13/13,R1,(H (battery > 0)),H (battery > 0),True
+13/13,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+13/13,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/13,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/13,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/13,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/13,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+13/13,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+13/13,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+13/13,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+13/13,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/13,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+13/13,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/13,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+13/13,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+14/14,R1,(H (battery > 0)),H (battery > 0),True
+14/14,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+14/14,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/14,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/14,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/14,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/14,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+14/14,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+14/14,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+14/14,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+14/14,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/14,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+14/14,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/14,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+14/14,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+15/15,R1,(H (battery > 0)),H (battery > 0),True
+15/15,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+15/15,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/15,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/15,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/15,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/15,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+15/15,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+15/15,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+15/15,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+15/15,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/15,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+15/15,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/15,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+15/15,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+16/16,R1,(H (battery > 0)),H (battery > 0),True
+16/16,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+16/16,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/16,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/16,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/16,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/16,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+16/16,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+16/16,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+16/16,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+16/16,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/16,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+16/16,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/16,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+16/16,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+17/17,R1,(H (battery > 0)),H (battery > 0),True
+17/17,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+17/17,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/17,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/17,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/17,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/17,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+17/17,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+17/17,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+17/17,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+17/17,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/17,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+17/17,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/17,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+17/17,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+18/18,R1,(H (battery > 0)),H (battery > 0),True
+18/18,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+18/18,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/18,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/18,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/18,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/18,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+18/18,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+18/18,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+18/18,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+18/18,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/18,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+18/18,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/18,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+18/18,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+19/19,R1,(H (battery > 0)),H (battery > 0),True
+19/19,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+19/19,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/19,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/19,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/19,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/19,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+19/19,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+19/19,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+19/19,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+19/19,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/19,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+19/19,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/19,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+19/19,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+20/20,R1,(H (battery > 0)),H (battery > 0),True
+20/20,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+20/20,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/20,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/20,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/20,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/20,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+20/20,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+20/20,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+20/20,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+20/20,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/20,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+20/20,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/20,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+20/20,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+21/21,R1,(H (battery > 0)),H (battery > 0),True
+21/21,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+21/21,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/21,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/21,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/21,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/21,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+21/21,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+21/21,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+21/21,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+21/21,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/21,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+21/21,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/21,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+21/21,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+22/22,R1,(H (battery > 0)),H (battery > 0),True
+22/22,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+22/22,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/22,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/22,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/22,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/22,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+22/22,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+22/22,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+22/22,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+22/22,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/22,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+22/22,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/22,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+22/22,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+23/23,R1,(H (battery > 0)),H (battery > 0),True
+23/23,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+23/23,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/23,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/23,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/23,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/23,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+23/23,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+23/23,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+23/23,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+23/23,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/23,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+23/23,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/23,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+23/23,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+24/24,R1,(H (battery > 0)),H (battery > 0),True
+24/24,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+24/24,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/24,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (pre_battery * 0.05)),False
+0/24,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < (chargeNeeded_var + (chargeNeeded_var * 0.05))) → recharge),False
+0/24,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/24,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+24/24,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+24/24,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+24/24,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+24/24,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/24,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+24/24,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/24,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+24/24,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+25/25,R1,(H (battery > 0)),H (battery > 0),True
+25/25,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+25/25,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/25,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/25,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/25,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/25,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+25/25,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+25/25,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+25/25,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+25/25,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/25,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+25/25,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/25,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+25/25,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+26/26,R1,(H (battery > 0)),H (battery > 0),True
+26/26,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+26/26,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/26,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/26,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/26,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/26,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+26/26,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+26/26,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+26/26,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+26/26,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/26,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+26/26,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/26,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+26/26,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+27/27,R1,(H (battery > 0)),H (battery > 0),True
+27/27,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+27/27,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/27,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/27,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/27,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/27,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+27/27,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+27/27,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+27/27,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+27/27,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/27,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+27/27,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/27,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+27/27,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+28/28,R1,(H (battery > 0)),H (battery > 0),True
+28/28,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+28/28,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/28,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/28,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/28,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/28,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+28/28,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+28/28,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+28/28,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+28/28,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/28,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+28/28,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/28,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+28/28,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+29/29,R1,(H (battery > 0)),H (battery > 0),True
+29/29,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+29/29,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/29,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/29,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/29,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/29,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+29/29,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+29/29,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+29/29,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+29/29,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/29,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+29/29,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/29,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+29/29,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+30/30,R1,(H (battery > 0)),H (battery > 0),True
+30/30,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+30/30,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/30,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/30,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/30,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/30,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+30/30,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+30/30,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+30/30,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+30/30,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/30,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+30/30,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/30,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+30/30,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+31/31,R1,(H (battery > 0)),H (battery > 0),True
+31/31,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+31/31,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/31,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/31,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/31,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/31,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+31/31,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+31/31,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+31/31,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+31/31,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/31,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+31/31,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/31,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+31/31,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+32/32,R1,(H (battery > 0)),H (battery > 0),True
+32/32,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+32/32,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/32,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/32,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/32,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/32,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+32/32,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+32/32,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+32/32,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+32/32,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/32,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+32/32,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/32,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+32/32,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+33/33,R1,(H (battery > 0)),H (battery > 0),True
+33/33,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+33/33,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/33,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/33,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/33,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/33,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+33/33,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+33/33,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+33/33,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+33/33,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/33,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+33/33,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/33,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+33/33,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+34/34,R1,(H (battery > 0)),H (battery > 0),True
+34/34,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+34/34,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/34,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/34,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/34,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/34,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+34/34,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+34/34,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+34/34,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+34/34,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/34,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+34/34,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/34,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+34/34,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+35/35,R1,(H (battery > 0)),H (battery > 0),True
+35/35,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+35/35,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/35,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/35,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/35,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/35,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+35/35,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+35/35,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+35/35,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+35/35,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/35,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+35/35,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/35,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+35/35,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+36/36,R1,(H (battery > 0)),H (battery > 0),True
+36/36,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+36/36,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/36,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/36,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/36,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/36,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+36/36,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+36/36,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+36/36,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+36/36,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/36,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+36/36,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/36,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+36/36,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+37/37,R1,(H (battery > 0)),H (battery > 0),True
+37/37,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+37/37,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/37,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/37,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/37,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/37,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+37/37,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+37/37,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+37/37,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+37/37,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/37,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+37/37,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/37,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+37/37,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+38/38,R1,(H (battery > 0)),H (battery > 0),True
+38/38,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+38/38,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/38,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/38,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/38,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/38,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+38/38,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+38/38,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+38/38,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+38/38,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/38,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+38/38,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/38,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+38/38,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+39/39,R1,(H (battery > 0)),H (battery > 0),True
+39/39,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+39/39,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/39,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/39,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/39,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/39,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+39/39,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+39/39,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+39/39,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+39/39,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/39,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+39/39,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/39,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+39/39,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+40/40,R1,(H (battery > 0)),H (battery > 0),True
+40/40,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+40/40,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/40,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/40,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/40,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/40,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+40/40,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+40/40,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+40/40,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+40/40,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/40,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+40/40,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/40,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+40/40,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+41/41,R1,(H (battery > 0)),H (battery > 0),True
+41/41,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+41/41,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/41,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/41,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/41,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/41,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+41/41,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+41/41,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+41/41,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+41/41,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/41,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+41/41,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/41,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+41/41,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+42/42,R1,(H (battery > 0)),H (battery > 0),True
+42/42,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+42/42,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/42,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/42,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/42,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/42,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+42/42,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+42/42,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+42/42,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+42/42,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/42,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+42/42,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/42,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+42/42,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+43/43,R1,(H (battery > 0)),H (battery > 0),True
+43/43,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+43/43,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/43,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/43,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/43,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/43,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+43/43,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+43/43,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+43/43,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+43/43,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/43,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+43/43,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/43,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+43/43,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+44/44,R1,(H (battery > 0)),H (battery > 0),True
+44/44,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+44/44,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/44,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/44,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/44,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/44,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+44/44,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+44/44,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+44/44,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+44/44,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/44,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+44/44,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/44,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+44/44,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+45/45,R1,(H (battery > 0)),H (battery > 0),True
+45/45,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+45/45,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/45,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/45,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/45,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/45,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+45/45,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+45/45,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+45/45,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+45/45,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/45,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+45/45,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/45,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+45/45,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+46/46,R1,(H (battery > 0)),H (battery > 0),True
+46/46,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+46/46,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/46,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/46,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/46,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/46,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+46/46,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+46/46,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+46/46,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+46/46,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/46,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+46/46,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/46,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+46/46,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+47/47,R1,(H (battery > 0)),H (battery > 0),True
+47/47,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+47/47,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/47,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/47,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/47,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/47,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+47/47,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+47/47,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+47/47,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+47/47,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/47,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+47/47,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/47,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+47/47,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+48/48,R1,(H (battery > 0)),H (battery > 0),True
+48/48,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+48/48,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/48,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/48,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/48,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/48,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+48/48,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+48/48,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+48/48,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+48/48,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/48,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+48/48,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/48,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+48/48,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+49/49,R1,(H (battery > 0)),H (battery > 0),True
+49/49,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+49/49,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/49,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (pre_battery * 0.05)),False
+0/49,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + (chargeNeeded_var * 0.05)) → recharge),False
+0/49,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/49,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+49/49,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+49/49,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+49/49,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+49/49,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/49,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+49/49,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/49,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+49/49,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+50/50,R1,(H (battery > 0)),H (battery > 0),True
+50/50,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+50/50,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/50,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/50,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/50,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/50,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+50/50,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+50/50,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+50/50,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+50/50,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/50,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+50/50,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/50,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+50/50,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+51/51,R1,(H (battery > 0)),H (battery > 0),True
+51/51,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+51/51,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/51,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/51,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/51,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/51,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+51/51,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+51/51,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+51/51,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+51/51,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/51,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+51/51,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/51,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+51/51,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+52/52,R1,(H (battery > 0)),H (battery > 0),True
+52/52,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+52/52,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/52,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/52,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/52,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/52,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+52/52,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+52/52,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+52/52,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+52/52,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/52,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+52/52,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/52,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+52/52,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+53/53,R1,(H (battery > 0)),H (battery > 0),True
+53/53,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+53/53,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/53,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/53,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/53,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/53,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+53/53,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+53/53,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+53/53,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+53/53,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/53,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+53/53,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/53,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+53/53,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+54/54,R1,(H (battery > 0)),H (battery > 0),True
+54/54,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+54/54,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/54,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/54,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/54,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/54,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+54/54,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+54/54,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+54/54,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+54/54,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/54,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+54/54,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/54,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+54/54,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+55/55,R1,(H (battery > 0)),H (battery > 0),True
+55/55,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+55/55,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/55,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/55,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/55,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/55,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+55/55,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+55/55,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+55/55,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+55/55,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/55,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+55/55,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/55,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+55/55,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+56/56,R1,(H (battery > 0)),H (battery > 0),True
+56/56,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+56/56,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/56,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/56,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/56,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/56,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+56/56,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+56/56,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+56/56,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+56/56,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/56,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+56/56,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/56,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+56/56,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+57/57,R1,(H (battery > 0)),H (battery > 0),True
+57/57,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+57/57,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/57,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/57,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/57,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/57,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+57/57,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+57/57,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+57/57,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+57/57,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/57,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+57/57,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/57,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+57/57,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+58/58,R1,(H (battery > 0)),H (battery > 0),True
+58/58,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+58/58,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/58,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/58,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/58,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S ¬batteryFull),False
+0/58,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+58/58,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+58/58,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+58/58,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+58/58,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/58,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+58/58,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/58,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+58/58,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+59/59,R1,(H (battery > 0)),H (battery > 0),True
+59/59,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+59/59,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/59,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/59,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/59,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/59,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+59/59,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+59/59,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+59/59,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+59/59,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/59,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+59/59,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/59,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+59/59,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+60/60,R1,(H (battery > 0)),H (battery > 0),True
+60/60,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+60/60,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/60,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/60,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/60,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/60,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+60/60,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+60/60,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+60/60,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+60/60,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/60,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+60/60,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/60,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+60/60,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+61/61,R1,(H (battery > 0)),H (battery > 0),True
+61/61,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+61/61,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/61,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/61,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/61,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/61,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+61/61,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+61/61,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+61/61,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+61/61,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/61,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+61/61,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/61,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+61/61,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+62/62,R1,(H (battery > 0)),H (battery > 0),True
+62/62,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+62/62,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/62,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/62,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/62,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/62,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+62/62,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+62/62,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+62/62,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+62/62,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/62,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+62/62,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/62,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+62/62,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+63/63,R1,(H (battery > 0)),H (battery > 0),True
+63/63,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+63/63,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/63,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/63,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/63,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/63,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+63/63,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+63/63,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+63/63,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+63/63,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/63,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+63/63,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/63,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+63/63,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+64/64,R1,(H (battery > 0)),H (battery > 0),True
+64/64,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+64/64,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/64,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/64,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/64,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/64,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+64/64,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+64/64,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+64/64,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+64/64,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/64,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+64/64,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/64,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+64/64,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+65/65,R1,(H (battery > 0)),H (battery > 0),True
+65/65,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+65/65,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/65,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/65,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/65,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/65,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+65/65,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+65/65,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+65/65,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+65/65,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/65,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+65/65,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/65,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+65/65,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+66/66,R1,(H (battery > 0)),H (battery > 0),True
+66/66,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+66/66,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/66,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/66,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/66,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/66,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+66/66,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+66/66,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+66/66,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+66/66,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/66,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+66/66,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/66,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+66/66,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+67/67,R1,(H (battery > 0)),H (battery > 0),True
+67/67,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+67/67,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/67,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/67,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/67,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/67,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+67/67,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+67/67,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+67/67,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+67/67,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/67,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+67/67,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/67,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+67/67,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+68/68,R1,(H (battery > 0)),H (battery > 0),True
+68/68,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+68/68,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/68,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/68,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/68,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/68,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+68/68,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+68/68,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+68/68,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+68/68,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/68,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+68/68,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/68,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+68/68,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+69/69,R1,(H (battery > 0)),H (battery > 0),True
+69/69,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+69/69,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/69,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/69,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/69,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/69,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+69/69,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+69/69,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+69/69,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+69/69,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/69,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+69/69,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/69,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+69/69,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+70/70,R1,(H (battery > 0)),H (battery > 0),True
+70/70,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+70/70,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/70,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/70,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/70,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/70,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+70/70,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+70/70,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+70/70,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+70/70,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/70,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+70/70,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/70,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+70/70,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+71/71,R1,(H (battery > 0)),H (battery > 0),True
+71/71,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+71/71,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/71,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/71,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/71,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/71,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+71/71,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+71/71,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+71/71,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+71/71,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/71,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+71/71,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/71,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+71/71,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+72/72,R1,(H (battery > 0)),H (battery > 0),True
+72/72,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+72/72,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/72,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/72,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/72,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/72,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+72/72,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+72/72,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+72/72,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+72/72,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/72,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+72/72,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/72,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+72/72,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+73/73,R1,(H (battery > 0)),H (battery > 0),True
+73/73,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+73/73,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/73,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/73,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/73,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/73,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+73/73,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+73/73,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+73/73,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+73/73,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/73,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+73/73,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/73,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+73/73,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+74/74,R1,(H (battery > 0)),H (battery > 0),True
+74/74,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+74/74,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/74,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/74,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/74,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/74,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+74/74,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+74/74,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+74/74,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+74/74,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/74,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+74/74,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/74,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+74/74,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+75/75,R1,(H (battery > 0)),H (battery > 0),True
+75/75,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+75/75,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/75,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/75,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/75,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/75,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+75/75,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+75/75,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+75/75,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+75/75,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/75,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+75/75,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/75,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+75/75,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+76/76,R1,(H (battery > 0)),H (battery > 0),True
+76/76,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+76/76,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/76,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/76,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/76,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((O (currentPosition = chargePosition)) → (currentPosition = chargePosition S ¬batteryFull)),False
+0/76,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+76/76,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+76/76,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+76/76,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+76/76,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/76,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+76/76,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/76,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+76/76,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+77/77,R1,(H (battery > 0)),H (battery > 0),True
+77/77,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+77/77,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/77,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/77,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/77,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/77,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+77/77,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+77/77,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+77/77,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+77/77,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/77,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+77/77,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/77,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+77/77,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+78/78,R1,(H (battery > 0)),H (battery > 0),True
+78/78,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+78/78,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/78,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/78,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/78,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/78,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+78/78,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+78/78,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+78/78,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+78/78,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/78,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+78/78,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/78,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+78/78,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+79/79,R1,(H (battery > 0)),H (battery > 0),True
+79/79,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+79/79,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/79,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/79,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/79,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/79,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+79/79,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+79/79,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+79/79,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+79/79,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/79,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+79/79,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/79,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+79/79,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+80/80,R1,(H (battery > 0)),H (battery > 0),True
+80/80,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+80/80,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/80,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/80,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/80,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/80,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+80/80,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+80/80,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+80/80,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+80/80,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/80,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+80/80,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/80,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+80/80,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+81/81,R1,(H (battery > 0)),H (battery > 0),True
+81/81,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+81/81,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/81,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/81,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/81,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/81,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+81/81,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+81/81,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+81/81,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+81/81,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/81,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+81/81,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/81,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+81/81,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+82/82,R1,(H (battery > 0)),H (battery > 0),True
+82/82,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+82/82,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/82,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/82,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/82,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/82,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+82/82,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+82/82,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+82/82,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+82/82,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/82,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+82/82,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/82,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+82/82,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+83/83,R1,(H (battery > 0)),H (battery > 0),True
+83/83,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+83/83,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/83,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/83,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/83,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/83,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+83/83,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+83/83,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+83/83,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+83/83,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/83,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+83/83,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/83,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+83/83,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+84/84,R1,(H (battery > 0)),H (battery > 0),True
+84/84,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+84/84,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/84,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/84,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/84,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/84,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+84/84,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+84/84,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+84/84,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+84/84,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/84,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+84/84,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/84,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+84/84,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+85/85,R1,(H (battery > 0)),H (battery > 0),True
+85/85,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+85/85,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/85,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/85,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/85,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/85,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+85/85,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+85/85,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+85/85,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+85/85,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/85,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+85/85,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/85,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+85/85,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+86/86,R1,(H (battery > 0)),H (battery > 0),True
+86/86,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+86/86,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/86,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/86,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/86,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/86,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+86/86,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+86/86,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+86/86,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+86/86,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/86,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+86/86,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/86,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+86/86,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+87/87,R1,(H (battery > 0)),H (battery > 0),True
+87/87,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+87/87,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/87,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/87,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/87,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/87,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+87/87,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+87/87,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+87/87,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+87/87,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+0/87,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+87/87,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/87,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+87/87,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+88/88,R1,(H (battery > 0)),H (battery > 0),True
+88/88,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+88/88,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/88,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/88,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/88,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/88,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+88/88,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+88/88,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+88/88,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+88/88,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/88,R2.2.2,(H (! (currentPosition != obstacle))),H (currentPosition ≠ obstacle),True
+88/88,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/88,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ O atGoal),False
+88/88,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+89/89,R1,(H (battery > 0)),H (battery > 0),True
+89/89,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+89/89,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/89,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/89,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/89,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/89,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+89/89,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+89/89,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+89/89,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+89/89,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/89,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+89/89,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/89,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+89/89,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+90/90,R1,(H (battery > 0)),H (battery > 0),True
+90/90,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+90/90,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/90,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/90,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/90,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/90,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+90/90,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+90/90,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+90/90,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+90/90,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/90,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+90/90,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/90,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+90/90,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+91/91,R1,(H (battery > 0)),H (battery > 0),True
+91/91,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+91/91,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/91,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/91,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/91,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/91,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+91/91,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+91/91,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+91/91,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+91/91,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/91,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+91/91,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/91,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+91/91,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+92/92,R1,(H (battery > 0)),H (battery > 0),True
+92/92,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+92/92,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/92,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/92,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/92,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/92,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+92/92,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+92/92,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+92/92,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+92/92,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/92,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+92/92,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/92,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+92/92,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+93/93,R1,(H (battery > 0)),H (battery > 0),True
+93/93,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+93/93,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/93,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/93,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/93,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/93,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+93/93,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+93/93,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+93/93,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+93/93,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/93,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+93/93,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/93,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+93/93,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+94/94,R1,(H (battery > 0)),H (battery > 0),True
+94/94,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+94/94,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/94,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/94,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/94,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/94,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+94/94,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+94/94,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+94/94,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+94/94,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/94,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+94/94,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/94,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+94/94,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+95/95,R1,(H (battery > 0)),H (battery > 0),True
+95/95,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+95/95,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/95,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/95,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/95,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/95,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+95/95,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+95/95,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+95/95,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+95/95,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/95,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+95/95,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/95,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+95/95,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+96/96,R1,(H (battery > 0)),H (battery > 0),True
+96/96,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+96/96,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/96,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/96,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/96,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/96,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+96/96,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+96/96,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+96/96,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+96/96,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/96,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+96/96,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/96,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+96/96,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+97/97,R1,(H (battery > 0)),H (battery > 0),True
+97/97,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+97/97,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/97,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/97,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/97,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/97,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+97/97,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+97/97,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+97/97,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+97/97,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/97,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+97/97,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/97,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+97/97,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+98/98,R1,(H (battery > 0)),H (battery > 0),True
+98/98,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+98/98,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/98,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/98,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/98,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/98,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+98/98,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+98/98,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+98/98,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+98/98,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/98,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+98/98,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/98,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+98/98,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+99/99,R1,(H (battery > 0)),H (battery > 0),True
+99/99,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+99/99,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/99,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/99,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/99,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/99,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+99/99,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+99/99,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+99/99,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+99/99,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/99,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+99/99,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/99,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (removeGoalFromSet ↔ atGoal),False
+99/99,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
+100/100,R1,(H (battery > 0)),H (battery > 0),True
+100/100,R1.1,(H (chargePosition = x)),H (chargePosition = x),True
+100/100,R1.2,(H (recharge -> (goal = chargePosition))),H (recharge → goal = chargePosition),True
+0/100,R1.3,(H (battery = ((pre_battery - (1 / n)) - 0.05))),H (battery = pre_battery - (0.05 * pre_battery)),False
+0/100,R1.4,(H (((0.95 * battery) <= chargeNeeded_var) -> recharge)),H ((battery < chargeNeeded_var + 0.05 * chargeNeeded_var) → recharge),False
+0/100,R1.5,(H (((goal = chargePosition) & atGoal) -> batteryFull)),H ((currentPosition = chargePosition) S (¬batteryFull)),False
+0/100,R1.6,(H (battery = (pre_battery - ((1 / n) * length_plan)))),H ((pre_battery - battery) ≤ (1 / n)),False
+100/100,R2,(H (! Obstacle_currentPosition)),H (¬Obstacle_currentPosition),True
+100/100,R2.1,(H (initialPosition = y)),H (initialPosition = y),True
+100/100,R2.2,(H (currentPosition = currentPhysicalPosition)),H (currentPhysicalPosition = currentPosition),True
+100/100,R2.2.1,(H ((! (Y TRUE)) -> (start = s0))),H (start = s0),True
+1/100,R2.2.2,(H (! (currentPosition != obstacle))),H (¬(currentPosition = obstacle)),False
+100/100,R2.6,(H (speed <= 10)),H (speed ≤ 10),True
+0/100,R3.2,"((H ((O[0,1] (atGoal & (Z (! atGoal)))) -> ((H (! atGoal)) | (! removeGoalFromSet)))) & (H ((O[2,2] ((atGoal & (Z (! atGoal))) & (! removeGoalFromSet))) -> (O[0,1] ((! (Y TRUE)) | removeGoalFromSet)))))",H (atGoal → removeGoalFromSet),False
+100/100,R3.5,(H (atGoal -> (currentPosition = goal))),H (atGoal → (currentPosition = goal)),True
