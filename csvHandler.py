@@ -129,6 +129,21 @@ def get_abzrover_variable_table_info():
     )
 
 
+def get_pipeline_variable_table_info():
+# variable_1, input integer variable_2, integer variable_3, bool variable_4, bool variable_5, integer constant variable_6, internal integer
+    return (
+        "Variable Mapping Table:\n"
+        "------------------------\n"
+        "variable_1 (Input, integer)\n"
+        "variable_2 (Input, integer)\n"
+        "variable_3 (Input, boolean)\n"
+        "variable_4 (Input, boolean)\n"
+        "variable_5 (Constant, integer)\n"
+        "variable_6 (Internal, integer)\n"
+
+    )
+
+
 def get_lung_ventilator_variable_table_info():
 
     return (

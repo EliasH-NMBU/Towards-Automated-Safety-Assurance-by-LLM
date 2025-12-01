@@ -64,7 +64,7 @@ def responseHandler(model, f1, f2):
             ["nuxmv.exe", tmp_path],
             capture_output=True,
             text=True,
-            timeout=60000
+            timeout=600
         )
 
     finally:
@@ -192,6 +192,28 @@ def check_equivalence_abzrover_extended(formula1, formula2):
         reboot : boolean;
         requestHelp : boolean;
         waitForHelpTimer : 0..1000;
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
+
+
+def check_equivalence_pipeline(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    # variable_1, input integer variable_2, integer variable_3, bool variable_4, bool variable_5, integer constant variable_6, internal integer
+
+    model = f"""
+    MODULE main
+    VAR
+        variable_1 : 0..100; -- Input integer
+        variable_2 : 0..100; -- Integer
+        variable_3 : boolean; -- Boolean
+        variable_4 : boolean; -- Boolean
+        variable_5 : 0..100; -- Constant integer
+        variable_6 : 0..100; -- Internal integer
 
     LTLSPEC ({f1}) <-> ({f2})
     """
