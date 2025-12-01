@@ -3,20 +3,23 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 1000 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_rover
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
 
 
 ### Load CSV data and variable table
-#VARIABLETABLE = csvHandler.get_master_variable_table_info()
-#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+VARIABLETABLE = csvHandler.get_master_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
 
 #VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv")
 
-VARIABLETABLE = csvHandler.get_rover_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
+#VARIABLETABLE = csvHandler.get_rover_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("roverFiles/roverReq.csv")
+
+#VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
 ###
 
 
@@ -78,7 +81,7 @@ if __name__ == "__main__":
 
     # Iteration Loop
     for iteration in range(NUM_ITERATIONS):    
-        print(f"\n🔁 Iteration {iteration + 1}/{NUM_ITERATIONS}")
+        print(f"\n Iteration {iteration + 1}/{NUM_ITERATIONS}")
 
         # Step 2: Generate all LTLs in one call
         batch_output = askgpt_generate_LTL_batch(nl_descriptions)
@@ -88,7 +91,7 @@ if __name__ == "__main__":
 
         # Step 4: Handle mismatched counts safely
         if len(generated_formulas) != len(csvData):
-            print(f"⚠️ Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
+            print(f"Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
             generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
 
         # Step 5: Validate each generated LTL formula
