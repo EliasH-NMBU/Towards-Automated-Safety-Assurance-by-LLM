@@ -25,11 +25,11 @@ os.makedirs(out_dir, exist_ok=True)
 # Pie Chart (NMBU Colors)
 # ----------------------------
 
-TITLE = "Reasoning Behind False Results"
-value1 = 4
-value2 = 6
+TITLE = "Causes of Inaccuracy \n Rover Use Case"
+value1 = 1
+value2 = 1
 value3 = 2
-value4 = 4
+value4 = 1
 
 NMBU_GREEN = "#07CA86"       # Primary green
 NMBU_DARK_GREEN = "#087D54"  # For accuracy bar
@@ -41,7 +41,7 @@ NMBU_GREY_DARK = "#4D4D4D"
 
 fig, ax = plt.subplots(figsize=(6, 6))
 
-labels = ['Manual', 'Description', 'Syntax', 'Other']
+labels = ['Generation', 'Description', 'Reference', 'Comparison']
 myexplode = [0, 0, 0, 0]
 sizes = [value1, value2, value3, value4]
 colors = [NMBU_GREEN,NMBU_DARK_GREEN, NMBU_LIGHT_GREEN, NMBU_GREY_LIGHT]
