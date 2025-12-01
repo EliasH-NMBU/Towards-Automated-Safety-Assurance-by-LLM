@@ -242,4 +242,4 @@ else:
     plt.savefig(f"{out_dir}/per_requirement_horizontal_bars_counts.pdf", dpi=300)
     plt.close()
 
-    print(f"📘 Per-requirement horizontal count bar chart generated. (Iterations = {iterations})")
+    print(f"Per-requirement horizontal count bar chart generated. (Iterations = {iterations})")

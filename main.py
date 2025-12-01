@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     # Iteration Loop
     for iteration in range(NUM_ITERATIONS):    
-        print(f"\n🔁 Iteration {iteration + 1}/{NUM_ITERATIONS}")
+        print(f"\n Iteration {iteration + 1}/{NUM_ITERATIONS}")
 
         # Step 2: Generate all LTLs in one call
         batch_output = askgpt_generate_LTL_batch(nl_descriptions)
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
         # Step 4: Handle mismatched counts safely
         if len(generated_formulas) != len(csvData):
-            print(f"⚠️ Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
+            print(f"Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
             generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
 
         # Step 5: Validate each generated LTL formula

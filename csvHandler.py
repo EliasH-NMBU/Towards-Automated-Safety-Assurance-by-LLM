@@ -29,7 +29,7 @@ def load_and_validate_csv(filepath: str):
             clean_row = {k.strip(): (v.strip() if v else "") for k, v in row.items()}
             data.append(clean_row)
 
-    print(f"✅ Loaded {len(data)} rows successfully.")
+    print(f"Loaded {len(data)} rows successfully.")
     return data
 
 
