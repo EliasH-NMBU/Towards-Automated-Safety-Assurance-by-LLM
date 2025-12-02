@@ -334,7 +334,7 @@ def get_lung_ventilator_variable_table_info():
     )
 
 
-def save_results_to_csv(results, output_path=None):
+def save_results_to_csv(results, output_path=None, temperature="0"):
 
     # Ensure directory exists
     os.makedirs("results", exist_ok=True)
@@ -342,8 +342,11 @@ def save_results_to_csv(results, output_path=None):
     date_str = datetime.now().strftime("%Y%m%d%H%M%S")
 
     # Default filename
-    if output_path is None:
+    if output_path is None and temperature == "0":
         output_path = f"results/{date_str}_ptLTL_results.csv"
+
+    if output_path is None and temperature != "0":
+        output_path = f"results/{date_str}_ptLTL_results_{temperature}.csv"
 
     fieldnames = ["Summary", "ID", "ptLTL", "Generated ptLTL", "Equivalence Check"]
 
