@@ -3,7 +3,7 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"
-NUM_ITERATIONS = 10
+NUM_ITERATIONS = 1000
 TEMPERATURE = 1
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_pipeline
 
