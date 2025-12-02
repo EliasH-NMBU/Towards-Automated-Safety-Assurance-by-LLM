@@ -3,8 +3,8 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"
-NUM_ITERATIONS = 1
-TEMPERATURE = 0
+NUM_ITERATIONS = 10
+TEMPERATURE = 1
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_pipeline
 
 client = OpenAI()
@@ -31,7 +31,7 @@ def run_full_ptltl_cycle(client):
         "variable_4 (bool)\n"
         "variable_5 (integer constant)\n"
         "variable_6 (internal integer)\n\n"
-        "Use only ptLTL operators:\n"
+        "Use only 1 or 2 ptLTL operators:\n"
         "- H φ (Historically)\n"
         "- O φ (Once)\n"
         "- Y φ (Yesterday)\n"
@@ -60,7 +60,7 @@ def run_full_ptltl_cycle(client):
     step2_prompt = (
         "Convert the following ptLTL requirement into natural language.\n"
         "Write a natural-language description that sounds like a real engineering requirement. Be a bit creative with the context, use automatio, robots, planes, cars and other scenarios.\n"
-        "Do not mention ptLTL or temporal logic. But make sure to strictly keep the variable names as they are and don't add any other variables.\n\n"
+        "Do not mention ptLTL or temporal logic. But make sure to strictly keep the variable names as they are and don't add any other variables. Do not use markdown formatting. No bold, italics, headers, commas, semi comma, or lists. \n\n"
         f"Formula:\n{ptltl_1}"
     )
 
@@ -117,10 +117,16 @@ def run_full_ptltl_cycle(client):
     ptltl_2 = step3.choices[0].message.content.strip()
 
 
+    print(f"\nGenerated ptLTL 1: {ptltl_1}")
+    print(f"\nGenerated ptLTL 2: {ptltl_2}")
+
     # ============================================================
     # Step 4: NuXMV equivalence check
     # ============================================================
     equivalence = EQUIVALENCE_HANDLER(ptltl_1, ptltl_2)
+
+    if equivalence is not True and equivalence is not False:
+        return
 
     return ptltl_1, nl_description, ptltl_2, equivalence
 
@@ -133,14 +139,22 @@ if __name__ == "__main__":
 
     results = []
     true_count = 0
+    iteration = 0
 
-    for iteration in range(NUM_ITERATIONS):
+    while iteration < NUM_ITERATIONS:
         print(f"\n=== Iteration {iteration+1}/{NUM_ITERATIONS} ===")
 
-        ptltl_1, nl_desc, ptltl_2, equivalence = run_full_ptltl_cycle(client)
+        cycleData = run_full_ptltl_cycle(client)
+        if not cycleData:
+            print("⚠️  Skipping iteration due to error in equivalence check.")
+            continue
+
+        ptltl_1, nl_desc, ptltl_2, equivalence = cycleData
 
         if equivalence is True:
             true_count += 1
+        
+        nl_desc = nl_desc.replace("\n", " ").replace(",", ";")
 
         # Build CSV row using your required schema
         results.append({
@@ -150,6 +164,8 @@ if __name__ == "__main__":
             "Generated ptLTL": ptltl_2,
             "Equivalence Check": equivalence
         })
+        iteration += 1
+
 
     # Save to CSV using your existing function
-    csvHandler.save_results_to_csv(results)
+    csvHandler.save_results_to_csv(results, temperature=str(TEMPERATURE))
