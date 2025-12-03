@@ -6,8 +6,8 @@ import os
 
 USECASE = "Lifted ptLTL Pair Testing"
 TEMP = "1"
-csv_file = "results/100+IterationResults/20251202145558_ptLTL_results_1.csv"
-ITERAITIONS = "100"
+csv_file = "results/100+IterationResults/20251202182154_ptLTL_results_1.csv"
+ITERAITIONS = "1000"
 
 # ----------------------------
 # Wilson Score Confidence Interval
