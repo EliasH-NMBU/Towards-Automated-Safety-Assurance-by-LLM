@@ -41,6 +41,13 @@ def normalize(f: str) -> str:
     f = re.sub(r"\bT\s*\(", "U(", f)
     f = re.sub(r"\bhistorically\b", "G", f)
 
+    f = re.sub(r"(\S.*?)\s+Y\s+(\S.*)", r"(\1) X (\2)", f)
+    f = re.sub(r"(\S.*?)\s+Z\s+(\S.*)", r"(\1) X (\2)", f)
+    f = re.sub(r"(\S.*?)\s+O\s+(\S.*)", r"(\1) F (\2)", f)
+    f = re.sub(r"(\S.*?)\s+S\s+(\S.*)", r"(\1) U (\2)", f)
+    f = re.sub(r"(\S.*?)\s+T\s+(\S.*)", r"(\1) U (\2)", f)
+
+
     # --- 4. Strip decimals (NuXMV cannot multiply floats) ---
     f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
 
@@ -55,19 +62,25 @@ def normalize(f: str) -> str:
 
 def responseHandler(model, f1, f2):
 
+    # Create temporary .smv file
     with tempfile.NamedTemporaryFile(suffix=".smv", delete=False, mode="w", encoding="utf-8") as tmp:
         tmp.write(model)
         tmp_path = tmp.name
 
     try:
-        result = subprocess.run(
-            ["nuxmv.exe", tmp_path],
-            capture_output=True,
-            text=True,
-            timeout=60000
-        )
+        try:
+            result = subprocess.run(
+                ["nuxmv.exe", tmp_path],
+                capture_output=True,
+                text=True,
+                timeout=30       # seconds
+            )
+        except subprocess.TimeoutExpired:
+            print("⏳ NuXMV timed out — returning empty")
+            return
 
     finally:
+        # Ensure temporary file is always removed
         os.remove(tmp_path)
 
     output = result.stdout
@@ -80,7 +93,7 @@ def responseHandler(model, f1, f2):
     else:
         print("⚠️ Unexpected NuXMV output format")
         print("---- STDOUT ----")
-        print("Reference: ", f1, "\n","Generated: ", f2)
+        print("Reference:", f1, "\n", "Generated:", f2)
         print("---- STDERR ----")
         print(error_output)
         print("----------------")
@@ -192,6 +205,28 @@ def check_equivalence_abzrover_extended(formula1, formula2):
         reboot : boolean;
         requestHelp : boolean;
         waitForHelpTimer : 0..1000;
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
+
+
+def check_equivalence_pipeline(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    # variable_1, input integer variable_2, integer variable_3, bool variable_4, bool variable_5, integer constant variable_6, internal integer
+
+    model = f"""
+    MODULE main
+    VAR
+        variable_1 : 0..100; -- Input integer
+        variable_2 : 0..100; -- Integer
+        variable_3 : boolean; -- Boolean
+        variable_4 : boolean; -- Boolean
+        variable_5 : 0..100; -- Constant integer
+        variable_6 : 0..100; -- Internal integer
 
     LTLSPEC ({f1}) <-> ({f2})
     """
@@ -416,3 +451,11 @@ if __name__ == "__main__":
         "(H (atGoal -> (currentPosition = goal)))"
     )
     print("Rover Equivalent:", equiv_rover)
+
+    pipeline = "(variable_3 → (variable_2 ≥ variable_5)) S (variable_1 > variable_6)"
+    pipeline2 = "H((variable_1 > variable_6) -> H(variable_3 -> (variable_2 >= variable_5)))"
+    p1 = normalize(pipeline)
+    p2 = normalize(pipeline2)
+    print("Normalize of Pipeline fault: ", p1)
+    print("Normalize of Pipeline fault 2: ", p2)
+    pipelineref = "(variable_3 → H(variable_2 ≥ variable_5))"
