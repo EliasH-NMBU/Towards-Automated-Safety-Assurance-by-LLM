@@ -129,6 +129,21 @@ def get_abzrover_variable_table_info():
     )
 
 
+def get_pipeline_variable_table_info():
+# variable_1, input integer variable_2, integer variable_3, bool variable_4, bool variable_5, integer constant variable_6, internal integer
+    return (
+        "Variable Mapping Table:\n"
+        "------------------------\n"
+        "variable_1 (Input, integer)\n"
+        "variable_2 (Input, integer)\n"
+        "variable_3 (Input, boolean)\n"
+        "variable_4 (Input, boolean)\n"
+        "variable_5 (Constant, integer)\n"
+        "variable_6 (Internal, integer)\n"
+
+    )
+
+
 def get_lung_ventilator_variable_table_info():
 
     return (
@@ -319,7 +334,7 @@ def get_lung_ventilator_variable_table_info():
     )
 
 
-def save_results_to_csv(results, output_path=None):
+def save_results_to_csv(results, output_path=None, temperature="0"):
 
     # Ensure directory exists
     os.makedirs("results", exist_ok=True)
@@ -327,8 +342,11 @@ def save_results_to_csv(results, output_path=None):
     date_str = datetime.now().strftime("%Y%m%d%H%M%S")
 
     # Default filename
-    if output_path is None:
+    if output_path is None and temperature == "0":
         output_path = f"results/{date_str}_ptLTL_results.csv"
+
+    if output_path is None and temperature != "0":
+        output_path = f"results/{date_str}_ptLTL_results_{temperature}.csv"
 
     fieldnames = ["Summary", "ID", "ptLTL", "Generated ptLTL", "Equivalence Check"]
 

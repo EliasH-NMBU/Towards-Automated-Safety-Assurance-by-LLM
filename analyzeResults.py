@@ -4,9 +4,9 @@ import numpy as np
 from scipy.stats import norm
 import os
 
-USECASE = "UV Robot Use Case"
-TEMP = "0"
-csv_file = "results/100+IterationResults/20251128192047_ptLTL_results.csv"
+USECASE = "Lifted ptLTL Pair Testing"
+TEMP = "1"
+csv_file = "results/100+IterationResults/20251202182154_ptLTL_results_1.csv"
 ITERAITIONS = "1000"
 
 # ----------------------------
