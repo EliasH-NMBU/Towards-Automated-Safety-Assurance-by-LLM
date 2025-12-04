@@ -157,7 +157,6 @@ def get_lung_ventilator_variable_table_info():
         "ExpiratoryPhaseEnd (Internal, boolean): True when the expiratory phase finishes.\n"
         "ExpiratoryTime (Internal, integer): Duration of the expiration phase in ms.\n"
         "ExpiratoryTriggerSensitivity (Input, integer): Flow threshold for triggering expiration.\n"
-        "F (Internal, integer): Measured or displayed flow parameter.\n"
         "Fail (Internal, boolean): Generic fault or error indicator.\n"
         "FailSafeMode (Internal, boolean): System safety fallback mode active.\n"
         "FinalState (Internal, integer): Recorded last state of ventilator before reset or shutdown.\n"
