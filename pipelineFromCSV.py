@@ -4,8 +4,8 @@ import nuXmvHandler
 import pandas as pd
 
 MODEL = "gpt-5-chat-latest"
-NUM_ITERATIONS = 10
-TEMPERATURE = 0
+NUM_ITERATIONS = 500
+TEMPERATURE = 0.1
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_lungV
 FILEPATH = "lungFiles/lungVentilatorReq.csv"   # or .xlsx
 VARIABLELIST = csvHandler.get_lung_ventilator_variable_table_info()
