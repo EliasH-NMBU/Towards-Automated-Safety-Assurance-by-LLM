@@ -4,10 +4,10 @@ import numpy as np
 from scipy.stats import norm
 import os
 
-USECASE = "Lifted ptLTL Pair Testing"
-TEMP = "1"
-csv_file = "results/100+IterationResults/20251202182154_ptLTL_results_1.csv"
-ITERAITIONS = "1000"
+USECASE = "Lifted Lung Ventilator"
+TEMP = "0.1"
+csv_file = "results/100+IterationResults/liftedlungV_500_20251207183943_ptLTL_results_0.1.csv"
+ITERAITIONS = "500"
 
 # ----------------------------
 # Wilson Score Confidence Interval

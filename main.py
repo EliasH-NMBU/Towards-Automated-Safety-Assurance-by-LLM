@@ -111,14 +111,15 @@ if __name__ == "__main__":
                 if result2 is True:
                     success_counts[ids[idx]] += 1
 
-            # Store results
-            results.append({
-                "Summary": f"{success_counts[ids[idx]]}/{iteration + 1}",
-                "ID": ids[idx],
-                "ptLTL": reference if reference else "None",
-                "Generated ptLTL": generated,
-                "Equivalence Check": result2
-            })
+            if result2 is True or False:
+                # Store results
+                results.append({
+                    "Summary": f"{success_counts[ids[idx]]}/{iteration + 1}",
+                    "ID": ids[idx],
+                    "ptLTL": reference if reference else "None",
+                    "Generated ptLTL": generated,
+                    "Equivalence Check": result2
+                })
 
     # Step 6: Save results to CSV
     csvHandler.save_results_to_csv(results)
