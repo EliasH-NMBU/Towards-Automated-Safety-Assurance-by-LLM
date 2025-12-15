@@ -5,9 +5,9 @@ from scipy.stats import norm
 import os
 
 USECASE = "Lifted Lung Ventilator"
-TEMP = "0.1"
-csv_file = "results/100+IterationResults/liftedlungV_500_20251207183943_ptLTL_results_0.1.csv"
-ITERAITIONS = "500"
+TEMP = "1"
+csv_file = "results/20251212191317_ptLTL_results_1.csv"
+ITERAITIONS = "100"
 
 # ----------------------------
 # Wilson Score Confidence Interval
