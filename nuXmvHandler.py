@@ -30,6 +30,8 @@ def normalize(f: str) -> str:
         "∨": "|",
         "&&": "&",
         "||": "|",
+        "or": "|",
+        "and": "&",
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
@@ -229,6 +231,29 @@ def check_equivalence_pipeline(formula1, formula2):
         variable_4 : boolean; -- Boolean
         variable_5 : 0..100; -- Constant integer
         variable_6 : 0..100; -- Internal integer
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
+
+
+def check_equivalence_stlpipeline(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    # variable_1, input integer variable_2, integer variable_3, bool variable_4, bool variable_5, integer constant variable_6, internal integer
+
+    model = f"""
+    MODULE main
+    VAR
+        prop_1 : boolean; -- Boolean
+        prop_2 : boolean; -- Boolean
+        prop_3 : boolean; -- Boolean
+        prop_4 : boolean; -- Boolean
+        prop_5 : boolean; -- Boolean
+        prop_6 : boolean; -- Boolean
+        prop_7 : boolean; -- Boolean
 
     LTLSPEC ({f1}) <-> ({f2})
     """
