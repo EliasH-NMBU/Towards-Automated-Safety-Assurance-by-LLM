@@ -28,6 +28,8 @@ def normalize(f: str) -> str:
         "¬": "!",
         "∧": "&",
         "∨": "|",
+        "&&": "&",
+        "||": "|",
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
@@ -73,7 +75,7 @@ def responseHandler(model, f1, f2):
                 ["nuxmv.exe", tmp_path],
                 capture_output=True,
                 text=True,
-                timeout=30       # seconds
+                timeout=45       # seconds
             )
         except subprocess.TimeoutExpired:
             print("⏳ NuXMV timed out — returning empty")

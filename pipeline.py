@@ -3,8 +3,8 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"
-NUM_ITERATIONS = 1000
-TEMPERATURE = 1
+NUM_ITERATIONS = 100
+TEMPERATURE = 0.5
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_pipeline
 
 client = OpenAI()
@@ -48,7 +48,7 @@ def run_full_ptltl_cycle(client):
             {"role": "user", "content": gen_prompt}
         ],
         max_completion_tokens=512,
-        temperature=TEMPERATURE
+        temperature=1
     )
 
     ptltl_1 = step1.choices[0].message.content.strip()
@@ -71,7 +71,7 @@ def run_full_ptltl_cycle(client):
             {"role": "user", "content": step2_prompt}
         ],
         max_completion_tokens=512,
-       temperature=TEMPERATURE
+       temperature=0
     )
 
     nl_description = step2.choices[0].message.content.strip()
