@@ -4,9 +4,9 @@ import numpy as np
 from scipy.stats import norm
 import os
 
-USECASE = "Lifted Lung Ventilator"
-TEMP = "1"
-csv_file = "results/20251212191317_ptLTL_results_1.csv"
+USECASE = "Lifted Benchmark"
+TEMP = "0.1"
+csv_file = "ltl_results.csv"
 ITERAITIONS = "100"
 
 # ----------------------------
@@ -29,7 +29,14 @@ def wilson_ci(successes, n, confidence=0.95):
 # ----------------------------
 
 df = pd.read_csv(csv_file)
-df['Equivalence Check'] = df['Equivalence Check'].astype(bool)
+
+df['Equivalence Check'] = (
+    df['Equivalence Check']
+    .astype(str)
+    .str.strip()
+    .str.lower()
+    .map({'true': True, 'false': False})
+)
 
 true_count = df['Equivalence Check'].sum()
 false_count = len(df) - true_count

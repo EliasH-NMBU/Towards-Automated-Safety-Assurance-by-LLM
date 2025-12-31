@@ -36,21 +36,41 @@ def normalize_ltl(formula: str) -> str:
         r'\bequal\b': '<->',
         r'\band\b': '&',
         r'\bor\b': '|',
+        r'\bnegation\b': '!',
     }
     for pat, rep in replacements.items():
         f = re.sub(pat, rep, f)
     return " ".join(f.split())
 
 
-
 def ltl_equivalent(f1: str, f2: str) -> bool:
+    
+    if "[" in f1 or "[" in f2:
+        print("\n⚠️ Bounded-time formula detected")
+        print("Formula 1:", f1)
+        print("Formula 2:", f2)
+
+        while True:
+            user = input("Are these equivalent? [t/f]: ").strip().lower()
+            if user in ("t", "true"):
+                return True
+            elif user in ("f", "false"):
+                return False
+            else:
+                print("Please enter 't' or 'f'.")
+
+
     try:
-        a1 = spot.translate(f1, 'det')
-        a2 = spot.translate(f2, 'det')
-        return spot.are_equivalent(a1, a2)
+        phi1 = spot.formula(f1)
+        phi2 = spot.formula(f2)
+
+        # Let Spot choose the cheapest automata internally
+        return spot.are_equivalent(phi1, phi2)
+
     except Exception as e:
-        print("LTL parse error:", e)
+        print("LTL error:", e)
         return False
+
 
 
 
@@ -59,7 +79,8 @@ def run_iteration(nl_text, reference_ltl):
 
     prompt = f"""
 Convert the requirement into a valid LTL formula using operators:
-G, F, X, U, &, |, ->, <->, !.
+G, F, U, [n,m], &, |, ->, <->, !. Where n and m is an integer for time steps. 
+Only use the operators when the description explicitly calls for them. Using wording like "globally, everytime, forever, never" and so on.
 Use only signals prop_1 ... prop_7.
 Output only the formula.
 
@@ -73,7 +94,7 @@ Requirement: {nl_text}
             {"role": "user", "content": prompt}
         ],
         max_completion_tokens=256,
-        temperature=1
+        temperature=0
     )
 
     generated = answer.choices[0].message.content.strip()
@@ -104,7 +125,7 @@ if __name__ == "__main__":
             "natural_language",
             "reference_ltl",
             "generated_ltl",
-            "equivalent"
+            "Equivalence Check"
         ])
 
         for i in range(NUM_ITERATIONS):
