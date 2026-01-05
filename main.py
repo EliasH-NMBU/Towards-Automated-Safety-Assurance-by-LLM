@@ -3,14 +3,14 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-NUM_ITERATIONS = 1000 # Number of iterations for the entire batch process
+NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_drone
 
 
 ### Load CSV data and variable table
-VARIABLETABLE = csvHandler.get_master_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
+#VARIABLETABLE = csvHandler.get_master_variable_table_info()
+#CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
 
 #VARIABLETABLE = csvHandler.get_lung_ventilator_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("lungFiles/lungVentilatorReq.csv")
@@ -20,6 +20,9 @@ CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
 
 #VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
+
+VARIABLETABLE = csvHandler.get_drone_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("droneFiles/droneReq.csv")
 ###
 
 
@@ -56,13 +59,21 @@ def askgpt_generate_LTL_batch(nl_descriptions):
     response = client.chat.completions.create(
         model=MODEL,
         messages=messages,
-        max_completion_tokens=9000,
+        max_completion_tokens=16384,
         temperature=TEMPERATURE # maybe change later
     )
 
     msg = response.choices[0].message.content.strip()
     # print(f"LTL Batch Result: {msg}")
     return msg
+
+
+
+def chunk_list(lst, chunk_size):
+    
+    for i in range(0, len(lst), chunk_size):
+        yield lst[i:i + chunk_size], i
+
 
 
 # Main execution
@@ -74,7 +85,7 @@ if __name__ == "__main__":
     results = []
 
     # Step 1: Gather all NL descriptions
-    nl_descriptions = [entry["NL description"] for entry in csvData]
+    nl_descriptions = [entry["FRETish"] for entry in csvData]
     ids = [entry["ID"] for entry in csvData]
     ltl_references = [entry["LTL"] for entry in csvData]
     success_counts = {id_: 0 for id_ in ids}
@@ -83,43 +94,52 @@ if __name__ == "__main__":
     for iteration in range(NUM_ITERATIONS):    
         print(f"\n Iteration {iteration + 1}/{NUM_ITERATIONS}")
 
-        # Step 2: Generate all LTLs in one call
-        batch_output = askgpt_generate_LTL_batch(nl_descriptions)
+        CHUNK_SIZE = 5  # ✅ safe default; 3–10 works well
 
-        # Step 3: Split batch output into lines (each should match one NL description)
-        generated_formulas = [line.strip() for line in batch_output.split("\n") if line.strip()]
+        for chunk, base_idx in chunk_list(nl_descriptions, CHUNK_SIZE):
 
-        # Step 4: Handle mismatched counts safely
-        if len(generated_formulas) != len(csvData):
-            print(f"Warning: Expected {len(csvData)} results, got {len(generated_formulas)}")
-            generated_formulas = (generated_formulas + ["ERROR"] * len(csvData))[:len(csvData)]
+            print(f"  Processing rows {base_idx} → {base_idx + len(chunk) - 1}")
 
-        # Step 5: Validate each generated LTL formula
-        for idx, entry in enumerate(csvData):
-            reference = ltl_references[idx]
-            generated = generated_formulas[idx]
+            batch_output = askgpt_generate_LTL_batch(chunk)
 
-            # Default if no reference
-            result2 = "N/A"
+            generated_formulas = [
+                line.strip() for line in batch_output.split("\n") if line.strip()
+            ]
 
-            if reference and reference.strip():
+            # Safety guard
+            if len(generated_formulas) != len(chunk):
+                print(
+                    f"Warning: Expected {len(chunk)} results, got {len(generated_formulas)}"
+                )
+                generated_formulas = (
+                    generated_formulas + ["ERROR"] * len(chunk)
+                )[:len(chunk)]
 
-                # Run semantic equivalence check
-                result2 = EQUIVALENCE_HANDLER(reference, generated) # Adjust function as needed
-           
-                # Increment true count
-                if result2 is True:
-                    success_counts[ids[idx]] += 1
+            # Validate each generated LTL formula
+            for local_idx, generated in enumerate(generated_formulas):
+                global_idx = base_idx + local_idx
 
-            if result2 is True or False:
-                # Store results
-                results.append({
-                    "Summary": f"{success_counts[ids[idx]]}/{iteration + 1}",
-                    "ID": ids[idx],
-                    "ptLTL": reference if reference else "None",
-                    "Generated ptLTL": generated,
-                    "Equivalence Check": result2
-                })
+                entry = csvData[global_idx]
+                reference = ltl_references[global_idx]
+                req_id = ids[global_idx]
+                print(f"    ID {req_id}: Generated ptLTL: {generated}   Reference ptLTL: {reference}")
+                result2 = "N/A"
+
+                if reference and reference.strip():
+                    result2 = EQUIVALENCE_HANDLER(reference, generated)
+
+                    if result2 is True:
+                        success_counts[req_id] += 1
+                
+                if result2 is True or False:
+                    results.append({
+                        "Summary": f"{success_counts[req_id]}/{iteration + 1}",
+                        "ID": req_id,
+                        "ptLTL": reference if reference else "None",
+                        "Generated ptLTL": generated,
+                        "Equivalence Check": result2
+                    })
+
 
     # Step 6: Save results to CSV
     csvHandler.save_results_to_csv(results)

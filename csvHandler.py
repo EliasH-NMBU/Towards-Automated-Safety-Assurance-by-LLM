@@ -81,6 +81,168 @@ def get_rover_variable_table_info():
         "goal (Input, integer): The target position currently assigned to the rover.\n"
     )
 
+def get_drone_variable_table_info():
+
+    return (
+        "Variable Mapping Table:\n"
+        "------------------------\n"
+
+        # Simulation & execution modes
+        "SimulationMode (Internal, boolean): Indicates whether the system is operating in simulation mode.\n"
+        "SimulationModeRaspberry (Internal, boolean): Indicates simulation mode is active on the Raspberry Pi.\n"
+        "HILSimulationGazebo (Internal, boolean): True when hardware-in-the-loop simulation using Gazebo is active.\n"
+        "AutonomousFlightMode (Internal, boolean): Indicates the drone is operating in autonomous flight mode.\n"
+        "RemoteControlFlightMode (Internal, boolean): Indicates the drone is being operated via remote control.\n"
+        "FailsafeFlightMode (Internal, boolean): Indicates the system has entered a failsafe flight mode.\n"
+        "RealMode (Internal, boolean): Indicates that the system is operating in real (non-simulated) mode.\n"
+        "HILSimulation (Internal, boolean): Indicates that hardware-in-the-loop simulation is active.\n"
+
+        # Simulation control & communication
+        "SimulateCommunications (Internal, boolean): Enables simulated communication between system components.\n"
+        "SimulatePackageSending (Internal, boolean): Enables simulation of package/message transmission.\n"
+        "SimulateFailureTransition (Internal, boolean): Triggers simulated failure state transitions.\n"
+        "SimulatePacketLoss (Internal, boolean): Enables simulation of packet loss in communications.\n"
+        "SimulationLoopStart (Event, boolean): Becomes true when a simulation loop begins.\n"
+        "SimulationLoopFinish (Event, boolean): Becomes true when a simulation loop completes.\n"
+        "SimulationDataSaved (Internal, boolean): Indicates that simulation data has been successfully stored.\n"
+
+        # Failure detection & fault handling
+        "JetsonFailureDetectionRunning (Internal, boolean): Indicates that Jetson-based failure detection is active.\n"
+        "JetsonFailureTransitionToNucleo (Internal, boolean): Indicates a failure-triggered control transition from Jetson to Nucleo.\n"
+        "RaspberryFailureDetectionRunning (Internal, boolean): Indicates failure detection is running on the Raspberry Pi.\n"
+        "ActiveNucleoFailureDetectionRunning (Internal, boolean): Indicates failure detection is active on the currently active Nucleo.\n"
+        "NucleoFailureSwitchActiveNucleo (Internal, boolean): Indicates failure-triggered switching between Nucleo controllers.\n"
+        "ActiveNucleo (Internal, boolean): Indicates which Nucleo controller is currently active.\n"
+        "NucleoOnline (Internal, boolean): Indicates the Nucleo controller is online and responsive.\n"
+
+        # Control authority & messaging
+        "JetsonControl (Internal, boolean): Indicates that control authority is held by the Jetson.\n"
+        "JetsonControlDisplay (Internal, boolean): Indicates Jetson control status is being displayed.\n"
+        "NucleoOneControl (Internal, boolean): Indicates that Nucleo One currently has control authority.\n"
+        "SendNucleoOneControlMessage (Output, boolean): Command to send a control message to Nucleo One.\n"
+        "NucleoTwoControl (Internal, boolean): Indicates that Nucleo Two currently has control authority.\n"
+        "SendNucleoTwoControlMessage (Output, boolean): Command to send a control message to Nucleo Two.\n"
+        "NulceoControl (Internal, boolean): Indicates that control authority is held by a Nucleo controller.\n"
+        "NucleoControlDisplay (Internal, boolean): Indicates Nucleo control status is being displayed.\n"
+        "NucleoControl (Internal, boolean): Indicates that a Nucleo controller has control authority.\n"
+        "DisplayCurrentController (Internal, boolean): Indicates which controller is currently in control is being displayed.\n"
+        "SendBatteryDischargeRateData (Output, boolean): Command to transmit battery discharge rate information.\n"
+        "MonitorBatteryDischargeRate (Internal, boolean): Enables monitoring of the battery discharge rate.\n"
+        "MonitorAngularVelocity (Internal, boolean): Enables monitoring of angular velocity data.\n"
+        "SendAngularVelocityData (Output, boolean): Command to send angular velocity data.\n"
+        "NucleoOneFailureDetectionRunning (Internal, boolean): Indicates that failure detection is active on Nucleo One.\n"
+        "true (Internal, boolean): Constant variable always set to true for logical operations.\n"
+        "false (Internal, boolean): Constant variable always set to false for logical operations.\n"
+
+        # Control loop & algorithm execution
+        "ControlLoopStart (Event, boolean): Indicates the start of a control loop execution.\n"
+        "ControlLoopFinish (Event, boolean): Indicates the completion of a control loop execution.\n"
+        "ControlLoopStartRaspberry (Event, boolean): Indicates the control loop has started on the Raspberry Pi.\n"
+        "ControlLoopStartNucleo (Event, boolean): Indicates the control loop has started on the Nucleo controller.\n"
+        "ControlAlgorithmStart (Event, boolean): Indicates the control algorithm has started execution.\n"
+        "ControlAlgorithmFinish (Event, boolean): Indicates the control algorithm has finished execution.\n"
+        "EvaluateControllerPerformance (Internal, boolean): Indicates controller performance evaluation is active.\n"
+        "MeasureControlTransition (Internal, boolean): Indicates measurement of control handover transitions.\n"
+        "CollectHardwareExecutionTimes (Internal, boolean): Enables collection of hardware execution timing data.\n"
+        "AssessHardwareTimePerformance (Internal, boolean): Indicates assessment of hardware timing performance.\n"
+
+        # Communication quality & packet loss
+        "MonitorCommunicationQuality (Internal, boolean): Enables monitoring of communication quality.\n"
+        "PacketLossRate (Internal, integer): Encoded packet loss rate percentage.\n"
+        "AcceptablePacketLoss (Internal, integer): Maximum acceptable packet loss percentage threshold.\n"
+
+        # Power & energy management
+        "MonitorPowerConsumption (Internal, boolean): Enables monitoring of power consumption.\n"
+        "ReturnPowerConsumptionData (Output, boolean): Command to transmit power consumption data.\n"
+        "ManageEnergySources (Internal, boolean): Indicates active management of onboard energy sources.\n"
+        "MonitorBatteryStatus (Internal, boolean): Enables monitoring of battery health status.\n"
+        "SendBatteryStatusData (Output, boolean): Command to send battery status data.\n"
+        "MonitorBatteryLevel (Internal, boolean): Enables monitoring of battery charge level.\n"
+        "SendBatteryLevelData (Output, boolean): Command to send battery level data.\n"
+        "MonitorBatteryVoltage (Internal, boolean): Enables monitoring of battery voltage.\n"
+        "SendBatteryVoltageData (Output, boolean): Command to send battery voltage data.\n"
+        "MonitorVoltageBusConsumption (Internal, boolean): Enables monitoring of voltage bus consumption.\n"
+        "SendVoltageBusConsumptionData (Output, boolean): Command to send voltage bus consumption data.\n"
+        "NucleoTwoFailureDetectionRunning (Internal, boolean): Indicates that failure detection is active on Nucleo Two.\n"
+
+        # System & health monitoring
+        "OverallSystemHealthMonitoring (Internal, boolean): Enables overall system health monitoring.\n"
+        "ElectricSystemsHealthMonitoring (Internal, boolean): Enables monitoring of electrical system health.\n"
+        "ServoMonitoring (Internal, boolean): Enables servo subsystem monitoring.\n"
+        "BatteryMonitoring (Internal, boolean): Enables battery monitoring subsystem.\n"
+        "UseRealTimeClock (Internal, boolean): Indicates use of a real-time clock for timing measurements.\n"
+        "MonitoringEnabled (Internal, boolean): Global enable flag for monitoring functionality.\n"
+        "MonitoringEnabledRaspberry (Internal, boolean): Enables monitoring on the Raspberry Pi.\n"
+
+        # Sensor monitoring & data transmission
+        "MonitorGroundSpeed (Internal, boolean): Enables monitoring of ground speed.\n"
+        "SendGroundSpeedData (Output, boolean): Command to send ground speed data.\n"
+        "MonitorWindSpeed (Internal, boolean): Enables monitoring of wind speed.\n"
+        "SendWindSpeedData (Output, boolean): Command to send wind speed data.\n"
+        "MonitorPitotTube (Internal, boolean): Enables monitoring of pitot tube sensor.\n"
+        "SendPitotTubeData (Output, boolean): Command to send pitot tube data.\n"
+        "MonitorAlphaVane (Internal, boolean): Enables monitoring of angle-of-attack vane.\n"
+        "SendAlphaVaneData (Output, boolean): Command to send alpha vane data.\n"
+        "MonitorBetaVane (Internal, boolean): Enables monitoring of sideslip vane.\n"
+        "SendBetaVaneData (Output, boolean): Command to send beta vane data.\n"
+        "MonitorServoMotors (Internal, boolean): Enables monitoring of servo motors.\n"
+        "SendServoMotorsData (Output, boolean): Command to send servo motor data.\n"
+        "MonitorTiltAngles (Internal, boolean): Enables monitoring of tilt angles.\n"
+        "SendTiltAngleData (Output, boolean): Command to send tilt angle data.\n"
+        "MonitorAccelerations (Internal, boolean): Enables monitoring of acceleration data.\n"
+        "SendAccelerationsData (Output, boolean): Command to send acceleration data.\n"
+        "MonitorBarometerAltitude (Internal, boolean): Enables monitoring of barometric altitude.\n"
+        "SendBarometerAltitudeData (Output, boolean): Command to send barometric altitude data.\n"
+        "MonitorRow (Internal, boolean): Enables monitoring of roll angle.\n"
+        "SendRowData (Output, boolean): Command to send roll data.\n"
+        "MonitorPitch (Internal, boolean): Enables monitoring of pitch angle.\n"
+        "SendPitchData (Output, boolean): Command to send pitch data.\n"
+        "MonitorYaw (Internal, boolean): Enables monitoring of yaw angle.\n"
+        "SendYawData (Output, boolean): Command to send yaw data.\n"
+
+        # IMU & navigation sensors
+        "MonitorAccelerometerData (Internal, boolean): Enables monitoring of accelerometer data.\n"
+        "SendAccelerometerData (Output, boolean): Command to send accelerometer data.\n"
+        "MonitorGyroscopeData (Internal, boolean): Enables monitoring of gyroscope data.\n"
+        "SendGyroscopeData (Output, boolean): Command to send gyroscope data.\n"
+        "MonitorMagnetometerData (Internal, boolean): Enables monitoring of magnetometer data.\n"
+        "SendMagnetometerData (Output, boolean): Command to send magnetometer data.\n"
+        "MonitorCompassData (Internal, boolean): Enables monitoring of compass data.\n"
+        "SendCompassData (Output, boolean): Command to send compass data.\n"
+
+        # GPS & positioning
+        "MonitorGPSLatitude (Internal, boolean): Enables monitoring of GPS latitude.\n"
+        "MonitorGPSLongitude (Internal, boolean): Enables monitoring of GPS longitude.\n"
+        "MonitorGPSAltitude (Internal, boolean): Enables monitoring of GPS altitude.\n"
+        "MonitorGPSHomePosition (Internal, boolean): Enables monitoring of GPS home position.\n"
+        "SendGPSData (Output, boolean): Command to send GPS data.\n"
+        "SatelliteShadowing (Internal, boolean): Indicates satellite signal shadowing conditions.\n"
+        "NoReceptionLoS (Internal, boolean): Indicates loss of line-of-sight satellite reception.\n"
+        "SignalDiffraction (Internal, boolean): Indicates signal diffraction effects.\n"
+        "MultipathEffects (Internal, boolean): Indicates multipath signal interference.\n"
+        "PositioningAccuracy (Internal, boolean): Indicates acceptable positioning accuracy.\n"
+        "MonitorRTKData (Internal, boolean): Enables monitoring of RTK correction data.\n"
+        "SendRTKData (Output, boolean): Command to send RTK data.\n"
+
+        # Mechanical & thermal monitoring
+        "MonitorMotorRPM (Internal, boolean): Enables monitoring of motor RPM.\n"
+        "SendMotorRPM (Output, boolean): Command to send motor RPM data.\n"
+        "MonitorPropellerRPM (Internal, boolean): Enables monitoring of propeller RPM.\n"
+        "SendPropellerRPMData (Output, boolean): Command to send propeller RPM data.\n"
+        "MonitorComponentsTemeratures (Internal, boolean): Enables monitoring of component temperatures.\n"
+        "SendComponentsTemperaturesData (Output, boolean): Command to send component temperature data.\n"
+        "MonitorInternalTemperature (Internal, boolean): Enables monitoring of internal temperature.\n"
+        "SendInternalTemperatureData (Output, boolean): Command to send internal temperature data.\n"
+        "MonitorBayAreaTemperature (Internal, boolean): Enables monitoring of bay area temperature.\n"
+        "SendBayAreaTemperatureData (Output, boolean): Command to send bay area temperature data.\n"
+
+        # Electrical current monitoring
+        "MonitorBrushlessCurrent (Internal, boolean): Enables monitoring of brushless motor current.\n"
+        "MonitorESCCurrent (Internal, boolean): Enables monitoring of ESC current.\n"
+        "MonitorServoMotorCurrent (Internal, boolean): Enables monitoring of servo motor current.\n"
+    )
+
+
 
 def get_abzrover_variable_table_info():
 

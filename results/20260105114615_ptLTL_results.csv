@@ -1,0 +1,8 @@
+Summary,ID,ptLTL,Generated ptLTL,Equivalence Check
+1/1,REQ005,(H ElectricSystemsHealthMonitoring),H(ElectricSystemsHealthMonitoring),True
+1/1,REQ007,(O OverallSystemHealthMonitoring),H(OverallSystemHealthMonitoring),True
+1/1,REQ050,(H ((((SatelliteShadowing | NoReceptionLoS) | SignalDiffraction) | MultipathEffects) -> PositioningAccuracy)),(SatelliteShadowing ∨ NoReceptionLoS ∨ SignalDiffraction ∨ MultipathEffects) → H(PositioningAccuracy),True
+1/1,REQ057,(H (MonitoringEnabled -> ManageEnergySources)),MonitoringEnabled → H(ManageEnergySources),True
+1/1,REQ063,(H (((AutonomousFlightMode -> (JetsonControl & JetsonControlDisplay)) & (RemoteControlFlightMode -> (NulceoControl & NucleoControlDisplay))) & (FailsafeFlightMode -> (NucleoControl & NucleoControlDisplay)))),H((AutonomousFlightMode → (JetsonControl & JetsonControlDisplay)) & (RemoteControlFlightMode → (NulceoControl & NucleoControlDisplay)) & (FailsafeFlightMode → (NucleoControl & NucleoControlDisplay))),True
+1/1,REQ064,(H DisplayCurrentController),H(DisplayCurrentController),True
+1/1,REQ065,(H (MonitoringEnabled -> ((MonitorBrushlessCurrent & MonitorESCCurrent) & MonitorServoMotorCurrent))),(MonitoringEnabled) → H(MonitorBrushlessCurrent & MonitorESCCurrent & MonitorServoMotorCurrent),True
