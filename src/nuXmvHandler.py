@@ -6,14 +6,12 @@ import unicodedata
 
 
 def normalize(f: str) -> str:
-    # --- 1. Normalize Unicode form ---
     f = unicodedata.normalize("NFKD", f)
 
-    # --- 2. Replace known math/logical Unicode operators ---
     replacements = {
-        "−": "-",   # minus
-        "–": "-",   # en-dash
-        "—": "-",   # em-dash
+        "−": "-",   
+        "–": "-",   
+        "—": "-",   
         "“": '"', "”": '"',
         "‘": "'", "’": "'",
         "×": "*",
@@ -30,13 +28,12 @@ def normalize(f: str) -> str:
         "∨": "|",
         "&&": "&",
         "||": "|",
-        "or": "|",
+        "or": "|", # might cause issues. Words like monitor and so on. 
         "and": "&",
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
 
-    # --- 3. Convert ptLTL past operators ---
     f = re.sub(r"\bY\s*\(", "X(", f)
     f = re.sub(r"\bZ\s*\(", "X(", f)
     f = re.sub(r"\bO\s*\[", "F[", f)
@@ -52,13 +49,10 @@ def normalize(f: str) -> str:
     f = re.sub(r"(\S.*?)\s+T\s+(\S.*)", r"(\1) U (\2)", f)
 
 
-    # --- 4. Strip decimals (NuXMV cannot multiply floats) ---
     f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
 
-    # --- 5. REMOVE ALL NON-ASCII CHARACTERS ---
     f = f.encode("ascii", "ignore").decode()
 
-    # --- 6. Collapse repeated whitespace ---
     f = re.sub(r"\s+", " ", f).strip()
 
     return f
