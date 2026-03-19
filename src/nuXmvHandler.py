@@ -11,9 +11,9 @@ def normalize(f: str) -> str:
 
     # --- Replace known math/logical Unicode operators ---
     replacements = {
-        "−": "-",   # minus
-        "–": "-",   # en-dash
-        "—": "-",   # em-dash
+        "−": "-",   
+        "–": "-",   
+        "—": "-",   
         "“": '"', "”": '"',
         "‘": "'", "’": "'",
         "×": "*",

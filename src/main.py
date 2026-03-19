@@ -3,7 +3,7 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
-specModel = "UV_nuXmvTest"
+SPEC = "UV_nuXmvTest"
 NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
 EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
@@ -143,4 +143,4 @@ if __name__ == "__main__":
 
 
     # Step 6: Save results to CSV
-    csvHandler.save_results_to_csv(results, temperature=str(TEMPERATURE), model=specModel)
+    csvHandler.save_results_to_csv(results, temperature=str(TEMPERATURE), model=SPEC)
