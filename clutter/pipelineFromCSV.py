@@ -4,11 +4,11 @@ import nuXmvHandler
 import pandas as pd
 
 MODEL = "gpt-5-chat-latest"
-NUM_ITERATIONS = 500
+NUM_ITERATIONS = 100
 TEMPERATURE = 0.1
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_lungV
-FILEPATH = "lungFiles/lungVentilatorReq.csv"   # or .xlsx
-VARIABLELIST = csvHandler.get_lung_ventilator_variable_table_info()
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_drone
+FILEPATH = "droneFiles\droneReq.csv"   # or .xlsx
+VARIABLELIST = csvHandler.get_drone_variable_table_info()
 
 client = OpenAI()
 

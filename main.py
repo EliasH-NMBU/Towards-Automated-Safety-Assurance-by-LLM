@@ -3,9 +3,10 @@ import csvHandler
 import nuXmvHandler
 
 MODEL = "gpt-5-chat-latest"  # You can also try: "gpt-5" "gpt-5-chat-latest" "gpt-4-turbo" "gpt-5-reasoning"
+specModel = "UV_nuXmvTest"
 NUM_ITERATIONS = 1 # Number of iterations for the entire batch process
 TEMPERATURE = 0  # Adjust temperature for variability in responses
-EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_drone
+EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_master
 
 
 ### Load CSV data and variable table
@@ -21,8 +22,8 @@ EQUIVALENCE_HANDLER = nuXmvHandler.check_equivalence_drone
 #VARIABLETABLE = csvHandler.get_abzrover_variable_table_info()
 #CSVDATA = csvHandler.load_and_validate_csv("abzRoverFiles/abzRoverReq.csv")
 
-VARIABLETABLE = csvHandler.get_drone_variable_table_info()
-CSVDATA = csvHandler.load_and_validate_csv("droneFiles/droneReq.csv")
+VARIABLETABLE = csvHandler.get_master_variable_table_info()
+CSVDATA = csvHandler.load_and_validate_csv("masterFiles/masterUseCaseReq.csv")
 ###
 
 
@@ -85,7 +86,7 @@ if __name__ == "__main__":
     results = []
 
     # Step 1: Gather all NL descriptions
-    nl_descriptions = [entry["FRETish"] for entry in csvData]
+    nl_descriptions = [entry["NL description"] for entry in csvData]
     ids = [entry["ID"] for entry in csvData]
     ltl_references = [entry["LTL"] for entry in csvData]
     success_counts = {id_: 0 for id_ in ids}
@@ -131,7 +132,7 @@ if __name__ == "__main__":
                     if result2 is True:
                         success_counts[req_id] += 1
                 
-                if result2 is True or False:
+                if result2 != "N/A":
                     results.append({
                         "Summary": f"{success_counts[req_id]}/{iteration + 1}",
                         "ID": req_id,
@@ -142,4 +143,4 @@ if __name__ == "__main__":
 
 
     # Step 6: Save results to CSV
-    csvHandler.save_results_to_csv(results)
+    csvHandler.save_results_to_csv(results, temperature=str(TEMPERATURE), model=specModel)

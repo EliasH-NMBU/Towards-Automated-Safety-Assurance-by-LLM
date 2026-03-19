@@ -5,8 +5,8 @@ from scipy.stats import norm
 import os
 
 USECASE = "Lifted Lung Ventilator"
-TEMP = "1"
-csv_file = "results/20251212191317_ptLTL_results_1.csv"
+TEMP = "0.1"
+csv_file = "results/20260105152329_ptLTL_results_0.1.csv"
 ITERAITIONS = "100"
 
 # ----------------------------

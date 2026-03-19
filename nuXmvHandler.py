@@ -6,10 +6,10 @@ import unicodedata
 
 
 def normalize(f: str) -> str:
-    # --- 1. Normalize Unicode form ---
+    # --- Normalize Unicode form ---
     f = unicodedata.normalize("NFKD", f)
 
-    # --- 2. Replace known math/logical Unicode operators ---
+    # --- Replace known math/logical Unicode operators ---
     replacements = {
         "−": "-",   # minus
         "–": "-",   # en-dash
@@ -29,36 +29,12 @@ def normalize(f: str) -> str:
         "∧": "&",
         "∨": "|",
         "&&": "&",
-        "||": "|",
-        #"or": "|",
-        "and": "&",
+        "||": "|"
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
 
-    # --- 3. Convert ptLTL past operators ---
-    f = re.sub(r"\bY\s*\(", "X(", f)
-    f = re.sub(r"\bZ\s*\(", "X(", f)
-    f = re.sub(r"\bO\s*\[", "F[", f)
-    f = re.sub(r"\bO\s*\(", "F(", f)
-    f = re.sub(r"\bS\s*\(", "U(", f)
-    f = re.sub(r"\bT\s*\(", "U(", f)
-    f = re.sub(r"\bhistorically\b", "G", f)
-
-    f = re.sub(r"(\S.*?)\s+Y\s+(\S.*)", r"(\1) X (\2)", f)
-    f = re.sub(r"(\S.*?)\s+Z\s+(\S.*)", r"(\1) X (\2)", f)
-    f = re.sub(r"(\S.*?)\s+O\s+(\S.*)", r"(\1) F (\2)", f)
-    f = re.sub(r"(\S.*?)\s+S\s+(\S.*)", r"(\1) U (\2)", f)
-    f = re.sub(r"(\S.*?)\s+T\s+(\S.*)", r"(\1) U (\2)", f)
-
-
-    # --- 4. Strip decimals (NuXMV cannot multiply floats) ---
-    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
-
-    # --- 5. REMOVE ALL NON-ASCII CHARACTERS ---
-    f = f.encode("ascii", "ignore").decode()
-
-    # --- 6. Collapse repeated whitespace ---
+    # --- Collapse repeated whitespace ---
     f = re.sub(r"\s+", " ", f).strip()
 
     return f
@@ -111,19 +87,25 @@ def check_equivalence_master(formula1, formula2):
 
     model = f"""
     MODULE main
+
+    IVAR
+      classifier : {{0, 1, 2}};
+      distance_to_target : 0..10;
+
     VAR
-    alert : boolean;
-    classifier : {{0, 1, 2}};
-    dgt_3 : boolean;
-    dgt_7 : boolean;
-    distance_to_target : 0..10;
-    halt : boolean;
-    OpState : {{0, 1, 2, 3}};
-    slowdown : boolean;
-    turnoffUVC : boolean;
+      alert : boolean;
+      halt : boolean;
+      slowdown : boolean;
+      turnoffUVC : boolean;
+      OpState : {{0, 1, 2, 3}};
+
+    DEFINE
+      dgt_3 := distance_to_target > 3;
+      dgt_7 := distance_to_target > 7;
 
     LTLSPEC ({f1}) <-> ({f2})
     """
+
     return responseHandler(model, f1, f2)
 
 
