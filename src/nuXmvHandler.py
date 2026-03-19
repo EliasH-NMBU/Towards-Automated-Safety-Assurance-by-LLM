@@ -6,8 +6,10 @@ import unicodedata
 
 
 def normalize(f: str) -> str:
+    # --- Normalize Unicode form ---
     f = unicodedata.normalize("NFKD", f)
 
+    # --- Replace known math/logical Unicode operators ---
     replacements = {
         "−": "-",   
         "–": "-",   
@@ -27,32 +29,12 @@ def normalize(f: str) -> str:
         "∧": "&",
         "∨": "|",
         "&&": "&",
-        "||": "|",
-        "or": "|", # might cause issues. Words like monitor and so on. 
-        "and": "&",
+        "||": "|"
     }
     for k, v in replacements.items():
         f = f.replace(k, v)
 
-    f = re.sub(r"\bY\s*\(", "X(", f)
-    f = re.sub(r"\bZ\s*\(", "X(", f)
-    f = re.sub(r"\bO\s*\[", "F[", f)
-    f = re.sub(r"\bO\s*\(", "F(", f)
-    f = re.sub(r"\bS\s*\(", "U(", f)
-    f = re.sub(r"\bT\s*\(", "U(", f)
-    f = re.sub(r"\bhistorically\b", "G", f)
-
-    f = re.sub(r"(\S.*?)\s+Y\s+(\S.*)", r"(\1) X (\2)", f)
-    f = re.sub(r"(\S.*?)\s+Z\s+(\S.*)", r"(\1) X (\2)", f)
-    f = re.sub(r"(\S.*?)\s+O\s+(\S.*)", r"(\1) F (\2)", f)
-    f = re.sub(r"(\S.*?)\s+S\s+(\S.*)", r"(\1) U (\2)", f)
-    f = re.sub(r"(\S.*?)\s+T\s+(\S.*)", r"(\1) U (\2)", f)
-
-
-    f = re.sub(r"(\d+)\.(\d+)", r"\1", f)
-
-    f = f.encode("ascii", "ignore").decode()
-
+    # --- Collapse repeated whitespace ---
     f = re.sub(r"\s+", " ", f).strip()
 
     return f
@@ -105,19 +87,25 @@ def check_equivalence_master(formula1, formula2):
 
     model = f"""
     MODULE main
+
+    IVAR
+      classifier : {{0, 1, 2}};
+      distance_to_target : 0..10;
+
     VAR
-    alert : boolean;
-    classifier : {{0, 1, 2}};
-    dgt_3 : boolean;
-    dgt_7 : boolean;
-    distance_to_target : 0..10;
-    halt : boolean;
-    OpState : {{0, 1, 2, 3}};
-    slowdown : boolean;
-    turnoffUVC : boolean;
+      alert : boolean;
+      halt : boolean;
+      slowdown : boolean;
+      turnoffUVC : boolean;
+      OpState : {{0, 1, 2, 3}};
+
+    DEFINE
+      dgt_3 := distance_to_target > 3;
+      dgt_7 := distance_to_target > 7;
 
     LTLSPEC ({f1}) <-> ({f2})
     """
+
     return responseHandler(model, f1, f2)
 
 
@@ -203,6 +191,151 @@ def check_equivalence_abzrover_extended(formula1, formula2):
         reboot : boolean;
         requestHelp : boolean;
         waitForHelpTimer : 0..1000;
+
+    LTLSPEC ({f1}) <-> ({f2})
+    """
+
+    return responseHandler(model, f1, f2)
+
+
+def check_equivalence_drone(formula1, formula2):
+    f1 = normalize(formula1)
+    f2 = normalize(formula2)
+
+    model = f"""
+    MODULE main
+    VAR
+        SimulationMode : boolean;
+        SimulationModeRaspberry : boolean;
+        SimulateCommunications : boolean;
+        SimulatePackageSending : boolean;
+        RealMode : boolean;
+        SimulationLoopStart : boolean;
+        SimulationLoopFinish : boolean;
+        HILSimulationGazebo : boolean;
+        JetsonFailureDetectionRunning : boolean;
+        JetsonFailureTransitionToNucleo : boolean;
+        NucleoOnline : boolean;
+        NucleoFailureSwitchActiveNucleo : boolean;
+        NucleoOneControl : boolean;
+        SendNucleoOneControlMessage : boolean;
+        NucleoTwoControl : boolean;
+        SendNucleoTwoControlMessage : boolean;
+        ActiveNucleoFailureDetectionRunning : boolean;
+        ActiveNucleo : boolean;
+        MonitorPowerConsumption : boolean;
+        ReturnPowerConsumptionData : boolean;
+        SimulateFailureTransition : boolean;
+        SimulatePacketLoss : boolean;
+        SimulationDataSaved : boolean;
+        ServoMonitoring : boolean;
+        BatteryMonitoring : boolean;
+        UseRealTimeClock : boolean;
+        AttitudeMonitoring : boolean;
+        OverallSystemHealthMonitoring : boolean;
+        PacketLossRate : 0..100;
+        AcceptablePacketLoss : 0..100;
+        ElectricSystemsHealthMonitoring : boolean;
+        ControlLoopStartRaspberry : boolean;
+        ControlLoopStartNucleo : boolean;
+        ControlLoopFinish : boolean;
+        RaspberryFailureDetectionRunning : boolean;
+        EvaluateControllerPerformance : boolean;
+        MeasureControlTransition : boolean;
+        CollectHardwareExecutionTimes : boolean;
+        AssessHardwareTimePerformance : boolean;
+        ControlAlgorithmStart : boolean;
+        ControlAlgorithmFinish : boolean;
+        ControlLoopStart : boolean;
+        MonitorGroundSpeed : boolean;
+        SendGroundSpeedData : boolean;
+        MonitorWindSpeed : boolean;
+        SendWindSpeedData : boolean;
+        MonitorPitotTube : boolean;
+        SendPitotTubeData : boolean;
+        MonitorAlphaVane : boolean;
+        SendAlphaVaneData : boolean;
+        MonitorBetaVane : boolean;
+        SendBetaVaneData : boolean;
+        MonitorServoMotors : boolean;
+        SendServoMotorsData : boolean;
+        MonitorTiltAngles : boolean;
+        SendTiltAngleData : boolean;
+        MonitorAccelerations : boolean;
+        SendAccelerationsData : boolean;
+        MonitorBarometerAltitude : boolean;
+        SendBarometerAltitudeData : boolean;
+        MonitorRow : boolean;
+        SendRowData : boolean;
+        MonitorPitch : boolean;
+        SendPitchData : boolean;
+        MonitorYaw : boolean;
+        SendYawData : boolean;
+        MonitorAccelerometerData : boolean;
+        SendAccelerometerData : boolean;
+        MonitorMagnetometerData : boolean;
+        SendMagnetometerData : boolean;
+        MonitorGyroscopeData : boolean;
+        SendGyroscopeData : boolean;
+        MonitorCompassData : boolean;
+        SendCompassData : boolean;
+        MonitorMotorRPM : boolean;
+        SendMotorRPM : boolean;
+        MonitorBoardStatus : boolean;
+        SendBoardStatusData : boolean;
+        MonitorGPSLatitude : boolean;
+        MonitorGPSLongitude : boolean;
+        MonitorGPSAltitude : boolean;
+        MonitorGPSHomePosition : boolean;
+        SendGPSData : boolean;
+        SatelliteShadowing : boolean;
+        NoReceptionLoS : boolean;
+        SignalDiffraction : boolean;
+        MultipathEffects : boolean;
+        PositioningAccuracy : boolean;
+        MonitorRTKData : boolean;
+        SendRTKData : boolean;
+        MonitorPropellerRPM : boolean;
+        SendPropellerRPMData : boolean;
+        MonitorComponentsTemeratures : boolean;
+        SendComponentsTemperaturesData : boolean;
+        MonitorInternalTemperature : boolean;
+        SendInternalTemperatureData : boolean;
+        MonitorBayAreaTemperature : boolean;
+        SendBayAreaTemperatureData : boolean;
+        MonitoringEnabledRaspberry : boolean;
+        MonitorCommunicationQuality : boolean;
+        MonitoringEnabled : boolean;
+        ManageEnergySources : boolean;
+        MonitorBatteryStatus : boolean;
+        SendBatteryStatusData : boolean;
+        MonitorBatteryLevel : boolean;
+        SendBatteryLevelData : boolean;
+        MonitorBatteryVoltage : boolean;
+        SendBatteryVoltageData : boolean;
+        MonitorVoltageBusConsumption : boolean;
+        SendVoltageBusConsumptionData : boolean;
+        AutonomousFlightMode : boolean;
+        JetsonControl : boolean;
+        JetsonControlDisplay : boolean;
+        RemoteControlFlightMode : boolean;
+        NulceoControl : boolean;
+        NucleoControlDisplay : boolean;
+        NucleoControl : boolean;
+        FailsafeFlightMode : boolean;
+        MonitorBrushlessCurrent : boolean;
+        MonitorESCCurrent : boolean;
+        MonitorServoMotorCurrent : boolean;
+        DisplayCurrentController : boolean;
+        SendBatteryDischargeRateData : boolean;
+        MonitorBatteryDischargeRate : boolean;
+        MonitorAngularVelocity : boolean;
+        SendAngularVelocityData : boolean;
+        NucleoOneFailureDetectionRunning : boolean;
+        HILSimulation : boolean;
+        NucleoTwoFailureDetectionRunning : boolean;
+        true : boolean;
+        false : boolean;
 
     LTLSPEC ({f1}) <-> ({f2})
     """
